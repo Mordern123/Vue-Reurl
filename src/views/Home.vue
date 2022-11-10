@@ -39,7 +39,7 @@ export default class Home extends Vue {
   data() {
     return {
       title: "Quick Cut",
-      slogan: "珍貴您的生活時間",
+      slogan: "短網址",
       description: "安全、簡單、快速",
     };
   }
