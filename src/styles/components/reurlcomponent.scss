@@ -12,7 +12,14 @@
         a {
             color: rgba(0, 0, 0, .75);
         }
+
     }
+
+
+    .nav .nav-item .nav-link.active {
+        color: white;
+        background-color: #F45757;
+      }
     
     .reurl-raw {
         color: black;
