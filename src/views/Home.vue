@@ -1,19 +1,21 @@
 <template>
   <div class="all-container d-flex flex-col">
-    <div
-      class="top-container d-flex justify-content-center align-items-center p-10"
-    >
+    <div class="top-container d-flex justify-content-center align-items-center">
       <div class="top-detail">
-        <div class="col-6">
-          <div class="title-content">
+        <div class="title-content d-flex flex-wrap">
+          <div
+            class="animate__animated animate__rotateInDownLeft animate__slower animate__infinite"
+            style="color: #e5baba"
+          >
             {{ title }}
           </div>
-          <div class="description-content">
-            {{ description }}
+          <div>
+            {{ slogan }}
           </div>
-          <button class="about-content mt-3">關於我們...</button>
         </div>
-        <div class="col-6"></div>
+        <div class="description-content">
+          {{ description }}
+        </div>
       </div>
     </div>
     <div class="bottom-container d-flex justify-content-center">
@@ -25,6 +27,7 @@
 <script lang="ts">
 import { Options, Vue } from "vue-class-component";
 import ReurlComponent from "@/components/ReurlComponent.vue"; // @ is an alias to /src
+import "animate.css";
 
 @Options({
   components: {
@@ -34,9 +37,9 @@ import ReurlComponent from "@/components/ReurlComponent.vue"; // @ is an alias t
 export default class Home extends Vue {
   data() {
     return {
-      title: "Free for Smart Short URL",
-      description:
-        "你可以在這裡簡單、安全、快速的進行縮短網址或是將圖片轉成網址",
+      title: "Quick Cut",
+      slogan: "珍貴您的生活時間",
+      description: "安全、簡單、快速",
     };
   }
 }

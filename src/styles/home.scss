@@ -1,32 +1,27 @@
 .all-container {
     height: 100vh;
+    padding-top: 80px;
 }
-
+.animate__animated.animate__rotateInDownLeft {
+    --animation-duration: 2s;
+}
 .top-container {
-
-    color: black;
+    color: #282C34;
 
     .top-detail {
-        width: 60%;
+        width: 50%;
 
         .title-content {
             font-size: 32px;
             font-weight: bold;
+
+
         }
     
         .description-content {
+            border-top: 1px solid black;
             font-size: 14px;
             color:	#8E8E8E;
         }
-    
-        .about-content {
-            font-size: 14px;
-            outline:none;
-        }
     }
-
-}
-
-.bottom-container {
-
 }
