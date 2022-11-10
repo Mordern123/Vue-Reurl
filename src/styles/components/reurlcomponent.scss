@@ -2,16 +2,18 @@
     width: 50%;
     .title-content {
         li {
-            background-color: #F5E3DA;
+            background-color: #3B4252;
             border-radius: 5px;
+            width: 24%;
         }
         a {
-            color: rgba(0, 0, 0, .75);
+            color: #D8DEE9;
+            font-size: 18px;
         }
     }
     .nav .nav-item .nav-link.active {
-        color: white;
-        background-color: #F45757;
+        color: #ECEFF4;
+        background-color: #545f75;
       }
     .tab-content {
         padding-top: 25px;

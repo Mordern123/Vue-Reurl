@@ -2,17 +2,17 @@
   <div class="all-container d-flex flex-col">
     <div class="top-container d-flex justify-content-center align-items-center">
       <div class="top-detail">
-        <div class="title-content d-flex flex-wrap">
+        <div class="title-content d-flex flex-wrap ">
           <div
-            class="mr-2 animate__animated animate__rotateInDownLeft animate__slower animate__infinite"
-            style="color: #e5baba"
+            class="col-8 d-flex justify-content-center mr-2 "
+            style="color: #2E3440"
           >
-            <i class="bi bi-scissors"></i>
-            {{ title }}
+            <div class="mr-2 animate__animated animate__rotateInDownLeft animate__slower animate__infinite">{{ title }}</div>
+            <div style="color: black;">
+              {{ slogan }}
+            </div>
           </div>
-          <div>
-            {{ slogan }}
-          </div>
+          
         </div>
         <div class="description-content pt-1">
           {{ description }}
@@ -38,11 +38,12 @@ import "animate.css";
 export default class Home extends Vue {
   data() {
     return {
-      title: "Quick Cut",
+      title: "Reurl",
       slogan: "短網址",
       description: "安全、簡單、快速",
     };
   }
+ 
 }
 </script>
 <style scoped lang="scss">

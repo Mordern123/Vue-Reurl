@@ -36,8 +36,10 @@
     </ul>
     <div class="raw-content tab-content">
       <div class="tab-pane fade show active" id="reurl">
-        <div class="reurl-raw">
-          <input class="reurl-input" type="text" placeholder="輸入網址" />
+        <div class="reurl-raw"> 
+          
+            <input class="reurl-input" type="text" placeholder="輸入網址" v-model="message"/>
+            <button @click="testapi(message)">按鈕</button>
         </div>
       </div>
       <div class="tab-pane fade" id="imgurl">
@@ -54,10 +56,34 @@
 </template>
 
 <script lang="ts">
-import { Options, Vue } from "vue-class-component";
+// import { Options, Vue } from "vue-class-component";
+import axios from 'axios';
 
-@Options({})
-export default class HelloWorld extends Vue {}
+// @Options({})
+export default {
+  data() {
+    return {
+      message: "", 
+    }
+  },
+  methods: {
+    testapi() {
+      axios
+        .post(
+          `https://privatutle-bcdlmykzda-de.a.run.app/api/short`,
+          {},
+          // {
+          //   headers: {
+          //     Authorization: loginToken,
+          //   },
+          // }
+        )
+        .then((res) => {
+         console.log(res)
+        });
+    }
+  },
+}
 </script>
 
 <style scoped lang="scss">
