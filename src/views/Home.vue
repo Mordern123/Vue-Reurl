@@ -1,34 +1,46 @@
 <template>
-  <div>
-    <div class="d-flex align-items-center p-10" style="height: 400px;background-color: #F5E3DA;">
-      <div class="col-6">
-        <div style="font-size: 48px;font-weight: bold;">{{title}}</div>
-        <div style="color: gray;">{{description}}</div>
-        <button class="mt-3">關於我們</button>
+  <div class="all-container d-flex flex-col">
+    <div
+      class="top-container d-flex justify-content-center align-items-center p-10"
+    >
+      <div class="top-detail">
+        <div class="col-6">
+          <div class="title-content">
+            {{ title }}
+          </div>
+          <div class="description-content">
+            {{ description }}
+          </div>
+          <button class="about-content mt-3">關於我們...</button>
+        </div>
+        <div class="col-6"></div>
       </div>
-      <div class="col-6"></div>
     </div>
-    <div>
-
+    <div class="bottom-container d-flex justify-content-center">
+      <ReurlComponent></ReurlComponent>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { Options, Vue } from 'vue-class-component';
-import HelloWorld from '@/components/HelloWorld.vue'; // @ is an alias to /src
+import { Options, Vue } from "vue-class-component";
+import ReurlComponent from "@/components/ReurlComponent.vue"; // @ is an alias to /src
 
 @Options({
   components: {
-    HelloWorld,
+    ReurlComponent,
   },
 })
 export default class Home extends Vue {
   data() {
     return {
       title: "Free for Smart Short URL",
-      description: "你可以在這裡簡單、安全、快速的進行縮短網址或是將圖片轉成網址",
-    }
+      description:
+        "你可以在這裡簡單、安全、快速的進行縮短網址或是將圖片轉成網址",
+    };
   }
 }
 </script>
+<style scoped lang="scss">
+@import "../styles/home.scss";
+</style>
