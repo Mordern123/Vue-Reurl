@@ -4,7 +4,7 @@
       <div class="top-detail">
         <div class="title-content d-flex flex-wrap">
           <div
-            class="animate__animated animate__rotateInDownLeft animate__slower animate__infinite"
+            class="mr-2 animate__animated animate__rotateInDownLeft animate__slower animate__infinite"
             style="color: #e5baba"
           >
             <i class="bi bi-scissors"></i>
@@ -14,7 +14,7 @@
             {{ slogan }}
           </div>
         </div>
-        <div class="description-content">
+        <div class="description-content pt-1">
           {{ description }}
         </div>
       </div>
