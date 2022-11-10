@@ -1,16 +1,20 @@
 <template>
   <div class="all-content">
-    <ul class="title-comtent nav nav-pills nav-fill justify-content-center">
-      <li class="nav-item">
+    <ul class="title-comtent nav nav-pills justify-content-between">
+      <li class="col-3 nav-item">
         <a href="#reurl" class="nav-link active" data-bs-toggle="tab"
-          ><i class="bi bi-link-45deg"></i>網址</a
+          ><i class="bi bi-link-45deg mr-2"></i>網址</a
         >
       </li>
-      <li class="nav-item">
-        <a href="#imgurl" class="nav-link" data-bs-toggle="tab">圖片</a>
+      <li class="col-3 nav-item">
+        <a href="#imgurl" class="nav-link" data-bs-toggle="tab"
+          ><i class="bi bi-image-fill mr-2"></i>圖片</a
+        >
       </li>
-      <li class="nav-item">
-        <a href="#videourl" class="nav-link" data-bs-toggle="tab">影片</a>
+      <li class="col-3 nav-item">
+        <a href="#videourl" class="nav-link" data-bs-toggle="tab"
+          ><i class="bi bi-skip-end-btn-fill mr-2"></i>影片</a
+        >
       </li>
     </ul>
     <div class="raw-content tab-content">
