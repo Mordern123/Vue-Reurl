@@ -7,6 +7,7 @@
             class="animate__animated animate__rotateInDownLeft animate__slower animate__infinite"
             style="color: #e5baba"
           >
+            <i class="bi bi-scissors"></i>
             {{ title }}
           </div>
           <div>
@@ -18,7 +19,7 @@
         </div>
       </div>
     </div>
-    <div class="bottom-container d-flex justify-content-center">
+    <div class="bottom-container d-flex justify-content-center py-3">
       <ReurlComponent></ReurlComponent>
     </div>
   </div>
