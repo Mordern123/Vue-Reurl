@@ -66,6 +66,9 @@
               <i class="bi bi-send-check"></i>
             </button>
             <button class="reurl-btn btn btn-outline-secondary" type="button">
+              <i class="bi bi-qr-code-scan"></i>
+            </button>
+            <button class="reurl-btn btn btn-outline-secondary" type="button">
               <i class="bi bi-clipboard-check"></i>
             </button>
           </div>
