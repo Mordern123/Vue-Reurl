@@ -5,6 +5,7 @@
             background-color: #3B4252;
             border-radius: 5px;
             width: 24%;
+            box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
         }
         a {
             color: #D8DEE9;
@@ -20,11 +21,16 @@
     }
     .reurl-raw {
         color: black;
-        .reurl-input {
-            width: 100%;
-            height: 40px;
-            border: 1px solid #868484;
-            border-radius: 10px;
+        .reurl-btn {
+            background-color: #545f75;
+        }
+        .reurl-btn:hover {
+            .bi {
+                color: rgba(255, 255, 255) ;
+            }
+        }
+        .bi {
+            color: rgba(255, 255, 255, 0.5) ;
         }
     }
     .imgurl-raw {

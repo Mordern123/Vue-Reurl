@@ -1,0 +1,25 @@
+.header-container {
+    padding: 0 50px;
+    height: 55px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+
+    .dropdown-menu {
+        padding: 0;
+        background-color: #3f485a;
+        .dropdown-item {
+            color: rgba(255, 255, 255, 0.6);
+        }
+        .dropdown-item:hover {
+            background-color: #545f75;
+            color: rgba(255, 255, 255);
+            border-radius: 5px;
+        }
+    }
+    .login-btn {
+        background-color: #545f75;
+        color: rgba(255, 255, 255, 0.8);
+        width: 60px;
+        border-radius: 10px;
+        box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+    }
+}

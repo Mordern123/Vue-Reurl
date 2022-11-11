@@ -36,10 +36,39 @@
     </ul>
     <div class="raw-content tab-content">
       <div class="tab-pane fade show active" id="reurl">
-        <div class="reurl-raw"> 
-          
-            <input class="reurl-input" type="text" placeholder="輸入網址" v-model="message"/>
-            <button @click="testapi(message)">按鈕</button>
+        <div class="reurl-raw d-flex flex-col">
+          <div class="input-group mb-3">
+            <input
+              type="text"
+              class="form-control"
+              placeholder="輸入網址"
+              v-model="message"
+              aria-describedby="button-addon"
+            />
+            <button
+              class="reurl-btn btn btn-outline-secondary"
+              type="button"
+              id="button-addon"
+              @click="testapi(message)"
+            >
+              <i class="bi bi-send"></i>
+            </button>
+          </div>
+          <div v-if="showUrl" class="input-group">
+            <div
+              type="text"
+              class="form-control"
+              style="background-color: #e6ecf8"
+            >
+              {{ shortUrl }}
+            </div>
+            <button class="reurl-btn btn btn-outline-secondary" type="button">
+              <i class="bi bi-send-check"></i>
+            </button>
+            <button class="reurl-btn btn btn-outline-secondary" type="button">
+              <i class="bi bi-clipboard-check"></i>
+            </button>
+          </div>
         </div>
       </div>
       <div class="tab-pane fade" id="imgurl">
@@ -56,22 +85,24 @@
 </template>
 
 <script lang="ts">
-// import { Options, Vue } from "vue-class-component";
-import axios from 'axios';
+import { defineComponent } from "vue";
+import axios from "axios";
 
-// @Options({})
-export default {
+export default defineComponent({
   data() {
     return {
-      message: "", 
-    }
+      message: "",
+      showUrl: false,
+      shortUrl: "",
+    };
   },
   methods: {
     testapi() {
+      console.log(this.message);
       axios
         .post(
           `https://privatutle-bcdlmykzda-de.a.run.app/api/short`,
-          {},
+          { leadUrl: this.message }
           // {
           //   headers: {
           //     Authorization: loginToken,
@@ -79,11 +110,13 @@ export default {
           // }
         )
         .then((res) => {
-         console.log(res)
+          console.log(res.data);
+          this.showUrl = true;
+          this.shortUrl = res.data.shortUrl;
         });
-    }
+    },
   },
-}
+});
 </script>
 
 <style scoped lang="scss">
