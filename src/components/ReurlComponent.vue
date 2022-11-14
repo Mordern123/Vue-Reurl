@@ -8,7 +8,7 @@
           class="nav-link active d-flex justify-content-center"
           data-bs-toggle="tab"
           @click="emitTitle(item.title)"
-          ><img class="mr-2" :src="getImg(item.img)" />{{ item.name }}</a
+          ><img class="mr-2" :src="getImg(item.img)" />{{ $t(`${item.name}`) }}</a
         >
         <a
           v-else
@@ -16,7 +16,7 @@
           class="nav-link d-flex justify-content-center"
           data-bs-toggle="tab"
           @click="emitTitle(item.title)"
-          ><img class="mr-2" :src="getImg(item.img)" />{{ item.name }}</a
+          ><img class="mr-2" :src="getImg(item.img)" />{{ $t(`${item.name}`) }}</a
         >
       </li>
     </ul>
@@ -90,25 +90,25 @@ export default defineComponent({
       shortUrl: "",
       categoryMap: [
         {
-          name: "網址",
+          name: "url",
           img: "link.svg",
           id: "#reurl",
           title: "短網址"
         },
         {
-          name: "圖片",
+          name: "image",
           img: "image.svg",
           id: "#imgurl",
           title: "圖片轉網址"
         },
         {
-          name: "影片",
+          name: "video",
           img: "video.svg",
           id: "#videourl",
           title: "影片轉網址"
         },
         {
-          name: "語音",
+          name: "audio",
           img: "mic.svg",
           id: "#audiourl",
           title: "語音轉網址"
@@ -116,6 +116,7 @@ export default defineComponent({
       ] as Array<categoryMapItem>,
     };
   },
+ 
   methods: {
     getImg(img: string) {
       return require(`@/assets/icons/${img}`)

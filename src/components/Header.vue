@@ -22,25 +22,21 @@
                 aria-expanded="false"
               >
                 <i class="bi bi-globe"></i>
-                {{ curLanguage }}
+                {{ $t(`${$i18n.locale}`) }}
               </a>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li><a class="dropdown-item" href="#">CN</a></li>
-                <li><a class="dropdown-item" href="#">EN</a></li>
+                <li v-for="item in language" :key="item">
+                  <a class="dropdown-item" href="#" @click="selectLanguage(item)">
+                    {{ $t(`${item}`) }}
+                  </a>
+                </li>
               </ul>
             </li>
             <div class="ml-4" style="color: #2e3440">
-              {{ userName }}
+              {{ $t("userName") }}
             </div>
-            <div
-              style="
-                height: 20px;
-                width: 2px;
-                background: #2e3440;
-                margin: 0 15px;
-              "
-            ></div>
-            <button class="login-btn">登入</button>
+            <div class="login_status"></div>
+            <button class="login-btn">{{ $t('login') }}</button>
           </ul>
         </div>
       </div>
@@ -50,16 +46,22 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import axios from "axios";
 
 export default defineComponent({
   data() {
     return {
-      curLanguage: "CN",
-      userName: "拜訪者模式",
+      language: ['zh','en','jp']
     };
   },
-  methods: {},
+  methods: {
+    selectLanguage(lang: string) {
+      this.$i18n.locale = lang;
+      localStorage.setItem("locale", lang);
+    }
+  },
+  mounted() {
+    this.$i18n.locale = localStorage.getItem("locale")!;
+  }
 });
 </script>
 

@@ -6,15 +6,16 @@ import "bootstrap/dist/css/bootstrap.min.css"
 import "bootstrap"
 import 'bootstrap-icons/font/bootstrap-icons.css'
 import './styles/app.css';
-import zh from './assets/language/zh-TW.json';
-import en from './assets/language/en-US.json';
+import zh from './assets/language/zh.json';
+import jp from './assets/language/jp.json';
+import en from './assets/language/en.json';
 const i18n = createI18n({
     legacy: false,
-    locale: "zh-TW",
-    fallbackLocale: "zh-TW",
+
     messages: {
-      "zh-TW": zh,
-      "en-US": en
+      "zh": zh,
+      "jp": jp,
+      "en": en
     },
     globalInjection: true
 });
