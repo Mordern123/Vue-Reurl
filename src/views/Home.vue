@@ -14,7 +14,7 @@
               style="color: #2e3440"
             >
               <div
-                class="mr-2 animate__animated animate__rotateInDownLeft animate__slower animate__infinite"
+                class="mr-2 animate__animated animate__rotateInDownLeft animate__slower"
               >
                 {{ title }}
               </div>
@@ -29,7 +29,7 @@
         </div>
       </div>
       <div class="bottom-container d-flex justify-content-center py-3">
-        <ReurlComponent></ReurlComponent>
+        <ReurlComponent @emit-title="getEmitTitle"></ReurlComponent>
       </div>
     </div>
   </div>
@@ -53,6 +53,11 @@ export default defineComponent({
       description: "安全、簡單、快速",
     };
   },
+  methods: {
+    getEmitTitle(title: string) {
+      this.slogan = title;
+    }
+  }
 });
 </script>
 <style scoped lang="scss">

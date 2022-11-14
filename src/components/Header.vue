@@ -4,8 +4,7 @@
       class="header-container navbar navbar-expand navbar-light bg-light w-100"
     >
       <div class="container-fluid w-100">
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0"></ul>
+        <div class="collapse navbar-collapse">
           <ul class="navbar-nav ml-auto d-flex align-items-center">
             <li class="nav-item dropdown">
               <a
