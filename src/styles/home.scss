@@ -15,9 +15,11 @@
             font-size: 60px;
             font-weight: bold;
             .reindeer-img {
+                filter: invert(75%);
+                width: 280px;
                 position: absolute;
-                top: -13px;
-                right: -20px;
+                top: 70px;
+                right: -50px;
                 z-index: -1;
             }
         }
