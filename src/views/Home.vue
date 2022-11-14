@@ -23,7 +23,10 @@
               </div>
             </div>
             <div class="reindeer-img">
-              <img src="../assets/img/reindeer.svg" >
+              <img src="../assets/img/reindeer.png">
+              <a href="https://www.flaticon.com/free-icons/deer" title="deer icons" style="color: rgba(0,0,0,0.3); font-size:12px; position: absolute; top: 80%;">
+                Deer icons created by monkik - Flaticon
+              </a>
             </div>
           </div>
           <div class="description-content pt-1">
