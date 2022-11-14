@@ -7,7 +7,7 @@
         <div class="collapse navbar-collapse">
           <div class="d-flex flex-col align-items-center">
             <img class="antlers-img" src="../assets/img/antlers.png">
-            <a class="d-flex flex-nowrap" style="font-size: 12px; color: rgba(0,0,0,0.3); " href="https://www.flaticon.com/free-icons/antlers" title="antlers icons">
+            <a class="d-flex flex-nowrap" style="font-size: 12px; color: rgba(0,0,0,0.2);" href="https://www.flaticon.com/free-icons/antlers" title="antlers icons">
               Antlers icons created by Umeicon - Flaticon
             </a>
           </div>
