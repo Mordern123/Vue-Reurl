@@ -22,6 +22,9 @@
                 {{ slogan }}
               </div>
             </div>
+            <div class="reindeer-img">
+              <img src="../assets/img/reindeer.svg" >
+            </div>
           </div>
           <div class="description-content pt-1">
             {{ description }}

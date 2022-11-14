@@ -10,10 +10,16 @@
 
     .top-detail {
         width: 50%;
-
+        position: relative;
         .title-content {
             font-size: 60px;
             font-weight: bold;
+            .reindeer-img {
+                position: absolute;
+                top: -13px;
+                right: -20px;
+                z-index: -1;
+            }
         }
     
         .description-content {
