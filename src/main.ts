@@ -6,8 +6,8 @@ import "bootstrap/dist/css/bootstrap.min.css"
 import "bootstrap"
 import 'bootstrap-icons/font/bootstrap-icons.css'
 import './styles/app.css';
-import zh from './language/zh-TW.json';
-import en from './language/en-US.json';
+import zh from './assets/language/zh-TW.json';
+import en from './assets/language/en-US.json';
 const i18n = createI18n({
     legacy: false,
     locale: "zh-TW",
