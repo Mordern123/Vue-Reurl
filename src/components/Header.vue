@@ -60,7 +60,7 @@ export default defineComponent({
     }
   },
   mounted() {
-    this.$i18n.locale = localStorage.getItem("locale")!;
+    this.$i18n.locale = localStorage.getItem("locale") || 'zh';
   }
 });
 </script>
