@@ -59,7 +59,8 @@
         </div>
       </div>
       <div class="tab-pane fade" id="imgurl">
-        <form class="dropzone imgurl-raw" enctype="multipart/form-data" action="" method="post"></form>
+        <form class="dropzone imgurl-raw"></form>
+        <button @click="test()">123</button>
       </div>
       <div class="tab-pane fade" id="videourl">
         <p class="videourl-raw">Messages tab content ...</p>
@@ -74,7 +75,7 @@
 <script lang="ts">
 import { ref, defineComponent } from "vue";
 import axios from "axios";
-import Dropzone from "dropzone";
+import Dropzone, { ACCEPTED } from "dropzone";
 
 interface categoryMapItem {
   name: string;
@@ -143,24 +144,37 @@ export default defineComponent({
           this.shortUrl = res.data.shortUrl;
         });
     },
+    test() {
+      this.myDropzone.processQueue();
+      
+    },
+    uploadImg() {
+      this.myDropzone = new Dropzone("form.dropzone", { 
+        url: "https://privatutle-bcdlmykzda-de.a.run.app/api/media/image",
+        autoProcessQueue: false,
+        paramName: "image",
+        addRemoveLinks: true,
+        dictCancelUpload: "上傳圖片中",
+        dictRemoveFile:"點此刪除圖片",
+        maxFiles: 1,
+        init: function() {
+          this.defaultOptions
+          this.on("maxfilesexceeded", (file) => {
+            this.removeAllFiles(true);
+            this.addFile(file);
+          });
+          this.on("sending", (file, xhr, formData) => {
+            formData.append("expirationTime", "3000");
+          });
+          this.on("success", (files: any, response: any) => {
+            console.log(response)
+          });
+        },
+      });
+    }
   },
   mounted() {
-    this.myDropzone = new Dropzone("form.dropzone", { 
-      url: "https://privatutle-bcdlmykzda-de.a.run.app/api/media/image",
-      autoProcessQueue: false,
-      uploadMultiple: true,
-      // parallelUploads: 4,
-      // maxFiles: 4,
-      paramName: "image",
-      init: function() {
-            this.on("sendingmultiple", function(file, xhr, formData)  {
-              formData.append("expirationTime", "3000");
-            });
-            this.on("successmultiple", function(files: any, response: any) {
-              console.log(response)
-            });
-      }
-    });
+    this.uploadImg();
   }
 });
 </script>
