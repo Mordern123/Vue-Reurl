@@ -59,8 +59,7 @@
         </div>
       </div>
       <div class="tab-pane fade" id="imgurl">
-        <form class="imgurl-raw" action="#">
-        </form>
+        <form class="dropzone imgurl-raw" enctype="multipart/form-data" action="" method="post"></form>
       </div>
       <div class="tab-pane fade" id="videourl">
         <p class="videourl-raw">Messages tab content ...</p>
@@ -73,7 +72,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
+import { ref, defineComponent } from "vue";
 import axios from "axios";
 import Dropzone from "dropzone";
 
@@ -87,6 +86,7 @@ interface categoryMapItem {
 export default defineComponent({
   data() {
     return {
+      myDropzone: null as any,
       message: "",
       showUrl: false,
       shortUrl: "",
@@ -145,11 +145,21 @@ export default defineComponent({
     },
   },
   mounted() {
-    Dropzone.autoDiscover = false;
-    const myDropzone = new Dropzone("form.imgurl-raw", { url: "#imgurl" });
-    
-    myDropzone.on("addedfile", file => {
-      console.log(`File added: ${file.name}`);
+    this.myDropzone = new Dropzone("form.dropzone", { 
+      url: "https://privatutle-bcdlmykzda-de.a.run.app/api/media/image",
+      autoProcessQueue: false,
+      uploadMultiple: true,
+      // parallelUploads: 4,
+      // maxFiles: 4,
+      paramName: "image",
+      init: function() {
+            this.on("sendingmultiple", function(file, xhr, formData)  {
+              formData.append("expirationTime", "3000");
+            });
+            this.on("successmultiple", function(files: any, response: any) {
+              console.log(response)
+            });
+      }
     });
   }
 });
