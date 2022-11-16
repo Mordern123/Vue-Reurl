@@ -59,7 +59,8 @@
         </div>
       </div>
       <div class="tab-pane fade" id="imgurl">
-        <p class="imgurl-raw">Profile tab content ...</p>
+        <form class="imgurl-raw" action="#">
+        </form>
       </div>
       <div class="tab-pane fade" id="videourl">
         <p class="videourl-raw">Messages tab content ...</p>
@@ -74,6 +75,7 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 import axios from "axios";
+import Dropzone from "dropzone";
 
 interface categoryMapItem {
   name: string;
@@ -142,6 +144,14 @@ export default defineComponent({
         });
     },
   },
+  mounted() {
+    Dropzone.autoDiscover = false;
+    const myDropzone = new Dropzone("form.imgurl-raw", { url: "#imgurl" });
+    
+    myDropzone.on("addedfile", file => {
+      console.log(`File added: ${file.name}`);
+    });
+  }
 });
 </script>
 

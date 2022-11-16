@@ -34,7 +34,13 @@
         }
     }
     .imgurl-raw {
+        width: 100%;
+        height: 200px;
+        border-radius: 10px;
+        border: 1mm ridge #545f75;
+        background-color: rgba(84, 95, 117, 0.08);
         color: black;
+        cursor: pointer;
     }
     .videourl-raw {
         color: black;
