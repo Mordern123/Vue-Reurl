@@ -7,5 +7,10 @@
     "url": "URL",
     "image": "写真",
     "video": "映画",
-    "audio": "声"
+    "audio": "声",
+    "deadline": "有効期限（単位：秒）",
+    "password": "パスワード",
+    "submit": "申し出る",
+    "editor": "編集",
+    "delete": "消す"
   }

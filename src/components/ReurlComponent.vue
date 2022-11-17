@@ -58,9 +58,58 @@
           </div>
         </div>
       </div>
-      <div class="tab-pane fade d-flex flex-col flex-xl-row" id="imgurl">
-        <form class="dropzone imgurl-raw col-xl-4"></form>
-        <button @click="test()">123</button>
+      <div class="img-block tab-pane fade" id="imgurl">
+        <div class="d-flex flex-col flex-xl-row justify-content-between">
+          <form class="dropzone imgurl-raw col-xl-4 mb-3">
+            <div class="dz-message" data-dz-message>
+              <span>
+                <i class="bi bi-image" style="font-size: 44px"></i><br/>
+                Drag and Drop File<br/>
+                or<br/>             
+              </span>
+              <span style="background-color:azure; border-radius: 10px; padding: 3px;">
+                  Browser
+              </span>
+            </div>
+          </form>
+          <div class="col-xl-7">
+            <div class="d-flex justify-content-center justify-content-xl-end mb-3">
+              <div class="btn-group" role="group" aria-label="Basic outlined example">
+                <button class="edit-btn btn btn-outline-primary px-4">
+                  <i class="bi bi-pencil-square mr-2"></i>{{ $t("editor") }}
+                </button>
+                <button class="delete-btn btn btn-outline-primary px-4" @click="deleteImg">
+                  <i class="bi bi-trash3 mr-2"></i>{{ $t("delete") }}
+                </button>
+              </div>
+            </div>
+            <div class="col-12">
+              <div class="imgtitle-setting w-100">
+                {{ $t("deadline") }}
+              </div>
+              <input 
+                class="imgtext-setting col-12"
+                type="text"
+                placeholder="example: 3000"
+                oninput="if(value>259200)value=259200;if(value<1)value=1"
+              >
+            </div>
+            <div class="col-12">
+              <div class="imgtitle-setting w-100">
+                {{ $t("password") }}
+              </div>
+              <input 
+                class="imgtext-setting col-12"
+                type="text"
+                placeholder="example: 123456"
+                oninput="if(value.length>18)value=value.slice(0,18)"
+              >
+            </div>
+          </div>
+        </div>
+        <button class="upload-btn col-12" @click="uploadImg()">
+          {{ $t("submit") }}
+        </button>
       </div>
       <div class="tab-pane fade" id="videourl">
         <p class="videourl-raw">Messages tab content ...</p>
@@ -130,7 +179,7 @@ export default defineComponent({
     getShortUrl() {
       axios
         .post(
-          `https://privatutle-bcdlmykzda-de.a.run.app/api/short`,
+          `https://privatutle-bcdlmykzda-de.a.run.app/api/short/`,
           { leadUrl: this.message }
           // {
           //   headers: {
@@ -144,11 +193,13 @@ export default defineComponent({
           this.shortUrl = res.data.shortUrl;
         });
     },
-    test() {
-      this.myDropzone.processQueue();
-      
+    deleteImg() {
+      this.myDropzone.removeAllFiles(true);
     },
     uploadImg() {
+      this.myDropzone.processQueue();
+    },
+    addImg() {
       this.myDropzone = new Dropzone("form.dropzone", { 
         url: "https://privatutle-bcdlmykzda-de.a.run.app/api/media/image",
         autoProcessQueue: false,
@@ -156,6 +207,7 @@ export default defineComponent({
         addRemoveLinks: true,
         dictCancelUpload: "上傳圖片中",
         dictRemoveFile:"點此刪除圖片",
+        acceptedFiles: ".jpeg,.jpg,.png,.gif,.bpm,.webp",
         maxFiles: 1,
         init: function() {
           this.on("maxfilesexceeded", (file) => {
@@ -173,7 +225,8 @@ export default defineComponent({
     }
   },
   mounted() {
-    this.uploadImg();
+    Dropzone.autoDiscover = false;
+    this.addImg();
   }
 });
 </script>
