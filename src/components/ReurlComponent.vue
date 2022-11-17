@@ -1,14 +1,20 @@
 <template>
   <div class="all-content">
     <ul class="title-content nav nav-pills justify-content-between">
-      <li class="col-2 nav-item" v-for="(item, index) in categoryMap" :key="item.id">
+      <li
+        class="col-2 nav-item"
+        v-for="(item, index) in categoryMap"
+        :key="item.id"
+      >
         <a
-          v-if="index==0"
+          v-if="index == 0"
           :href="item.id"
           class="nav-link active d-flex justify-content-center"
           data-bs-toggle="tab"
           @click="emitTitle(item.title)"
-          ><img class="mr-2" :src="getImg(item.img)" />{{ $t(`${item.name}`) }}</a
+          ><img class="mr-2" :src="getImg(item.img)" />{{
+            $t(`${item.name}`)
+          }}</a
         >
         <a
           v-else
@@ -16,7 +22,9 @@
           class="nav-link d-flex justify-content-center"
           data-bs-toggle="tab"
           @click="emitTitle(item.title)"
-          ><img class="mr-2" :src="getImg(item.img)" />{{ $t(`${item.name}`) }}</a
+          ><img class="mr-2" :src="getImg(item.img)" />{{
+            $t(`${item.name}`)
+          }}</a
         >
       </li>
     </ul>
@@ -63,22 +71,37 @@
           <form class="dropzone imgurl-raw col-xl-4 mb-3">
             <div class="dz-message" data-dz-message>
               <span>
-                <i class="bi bi-image" style="font-size: 44px"></i><br/>
-                Drag and Drop File<br/>
-                or<br/>             
+                <i class="bi bi-image" style="font-size: 44px"></i><br />
+                Drag and Drop File<br />
+                or<br />
               </span>
-              <span style="background-color:azure; border-radius: 10px; padding: 3px;">
-                  Browser
+              <span
+                style="
+                  background-color: azure;
+                  border-radius: 10px;
+                  padding: 3px;
+                "
+              >
+                Browser
               </span>
             </div>
           </form>
           <div class="col-xl-7">
-            <div class="d-flex justify-content-center justify-content-xl-end mb-3">
-              <div class="btn-group" role="group" aria-label="Basic outlined example">
+            <div
+              class="d-flex justify-content-center justify-content-xl-end mb-3"
+            >
+              <div
+                class="btn-group"
+                role="group"
+                aria-label="Basic outlined example"
+              >
                 <button class="edit-btn btn btn-outline-primary px-4">
                   <i class="bi bi-pencil-square mr-2"></i>{{ $t("editor") }}
                 </button>
-                <button class="delete-btn btn btn-outline-primary px-4" @click="deleteImg">
+                <button
+                  class="delete-btn btn btn-outline-primary px-4"
+                  @click="deleteImg"
+                >
                   <i class="bi bi-trash3 mr-2"></i>{{ $t("delete") }}
                 </button>
               </div>
@@ -87,23 +110,23 @@
               <div class="imgtitle-setting w-100">
                 {{ $t("deadline") }}
               </div>
-              <input 
+              <input
                 class="imgtext-setting col-12"
                 type="text"
                 placeholder="example: 3000"
                 oninput="if(value>259200)value=259200;if(value<1)value=1"
-              >
+              />
             </div>
             <div class="col-12">
               <div class="imgtitle-setting w-100">
                 {{ $t("password") }}
               </div>
-              <input 
+              <input
                 class="imgtext-setting col-12"
                 type="text"
                 placeholder="example: 123456"
                 oninput="if(value.length>18)value=value.slice(0,18)"
-              >
+              />
             </div>
           </div>
         </div>
@@ -145,33 +168,33 @@ export default defineComponent({
           name: "url",
           img: "link.svg",
           id: "#reurl",
-          title: "短網址"
+          title: "短網址",
         },
         {
           name: "image",
           img: "image.svg",
           id: "#imgurl",
-          title: "圖片轉網址"
+          title: "圖片轉網址",
         },
         {
           name: "video",
           img: "video.svg",
           id: "#videourl",
-          title: "影片轉網址"
+          title: "影片轉網址",
         },
         {
           name: "audio",
           img: "mic.svg",
           id: "#audiourl",
-          title: "語音轉網址"
-        }
+          title: "語音轉網址",
+        },
       ] as Array<categoryMapItem>,
     };
   },
- 
+
   methods: {
     getImg(img: string) {
-      return require(`@/assets/icons/${img}`)
+      return require(`@/assets/icons/${img}`);
     },
     emitTitle(title: string) {
       this.$emit("emit-title", title);
@@ -200,16 +223,16 @@ export default defineComponent({
       this.myDropzone.processQueue();
     },
     addImg() {
-      this.myDropzone = new Dropzone("form.dropzone", { 
+      this.myDropzone = new Dropzone("form.dropzone", {
         url: "https://privatutle-bcdlmykzda-de.a.run.app/api/media/image",
         autoProcessQueue: false,
         paramName: "image",
         addRemoveLinks: true,
         dictCancelUpload: "上傳圖片中",
-        dictRemoveFile:"點此刪除圖片",
+        dictRemoveFile: "點此刪除圖片",
         acceptedFiles: ".jpeg,.jpg,.png,.gif,.bpm,.webp",
         maxFiles: 1,
-        init: function() {
+        init: function () {
           this.on("maxfilesexceeded", (file) => {
             this.removeAllFiles(true);
             this.addFile(file);
@@ -218,16 +241,16 @@ export default defineComponent({
             formData.append("expirationTime", "3000");
           });
           this.on("success", (files: any, response: any) => {
-            console.log(response)
+            console.log(response);
           });
         },
       });
-    }
+    },
   },
   mounted() {
     Dropzone.autoDiscover = false;
     this.addImg();
-  }
+  },
 });
 </script>
 

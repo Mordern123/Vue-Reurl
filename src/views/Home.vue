@@ -14,7 +14,7 @@
               style="color: #2e3440"
             >
               <div
-                class="mr-2 animate__animated animate__rotateInDownLeft animate__slower"
+                class="mr-2 animate__animated animate__rotateInDownLeft animate__slower animate__infinite	infinite"
               >
                 {{ title }}
               </div>
