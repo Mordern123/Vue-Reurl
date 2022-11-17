@@ -48,7 +48,6 @@
           </div>
           <div v-if="showUrl" class="input-group">
             <div
-              type="text"
               class="form-control"
               style="background-color: #e6ecf8"
             >
@@ -93,9 +92,12 @@
               <div
                 class="btn-group"
                 role="group"
-                aria-label="Basic outlined example"
               >
-                <button class="edit-btn btn btn-outline-primary px-4">
+                <button 
+                  class="edit-btn btn btn-outline-primary px-4"
+                  data-bs-toggle="modal"
+                  data-bs-target="#imgModal"
+                >
                   <i class="bi bi-pencil-square mr-2"></i>{{ $t("editor") }}
                 </button>
                 <button
@@ -133,6 +135,23 @@
         <button class="upload-btn col-12" @click="uploadImg()">
           {{ $t("submit") }}
         </button>
+        <div v-if="showImg" class="input-group">
+          <div
+            class="form-control"
+            style="background-color: #e6ecf8"
+          >
+            {{ shortImg }}
+          </div>
+          <button class="reurl-btn btn btn-outline-secondary" type="button">
+            <i class="bi bi-send-check"></i>
+          </button>
+          <button class="reurl-btn btn btn-outline-secondary" type="button">
+            <i class="bi bi-qr-code-scan"></i>
+          </button>
+          <button class="reurl-btn btn btn-outline-secondary" type="button">
+            <i class="bi bi-clipboard-check"></i>
+          </button>
+        </div>
       </div>
       <div class="tab-pane fade" id="videourl">
         <p class="videourl-raw">Messages tab content ...</p>
@@ -142,12 +161,28 @@
       </div>
     </div>
   </div>
+
+  <div class="modal fade" id="imgModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" >圖片編輯器</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <ImageEditor></ImageEditor>
+        </div>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue";
 import axios from "axios";
 import Dropzone from "dropzone";
+import ImageEditor from "@/components/imageComponent/ImageEditor.vue";
+import { data } from "jquery";
 
 interface categoryMapItem {
   name: string;
@@ -157,12 +192,18 @@ interface categoryMapItem {
 }
 
 export default defineComponent({
+  components: {
+    ImageEditor,
+  },
   data() {
     return {
+      showEditor: false,
       myDropzone: null as any,
       message: "",
       showUrl: false,
       shortUrl: "",
+      showImg: false,
+      shortImg: "",
       categoryMap: [
         {
           name: "url",
@@ -221,6 +262,9 @@ export default defineComponent({
     },
     uploadImg() {
       this.myDropzone.processQueue();
+    },
+    editImg() {
+      this.showEditor = true;
     },
     addImg() {
       this.myDropzone = new Dropzone("form.dropzone", {
