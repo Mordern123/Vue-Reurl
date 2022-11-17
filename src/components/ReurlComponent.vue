@@ -58,8 +58,8 @@
           </div>
         </div>
       </div>
-      <div class="tab-pane fade" id="imgurl">
-        <form class="dropzone imgurl-raw"></form>
+      <div class="tab-pane fade d-flex flex-col flex-xl-row" id="imgurl">
+        <form class="dropzone imgurl-raw col-xl-4"></form>
         <button @click="test()">123</button>
       </div>
       <div class="tab-pane fade" id="videourl">
@@ -73,9 +73,9 @@
 </template>
 
 <script lang="ts">
-import { ref, defineComponent } from "vue";
+import { defineComponent } from "vue";
 import axios from "axios";
-import Dropzone, { ACCEPTED } from "dropzone";
+import Dropzone from "dropzone";
 
 interface categoryMapItem {
   name: string;
@@ -158,7 +158,6 @@ export default defineComponent({
         dictRemoveFile:"點此刪除圖片",
         maxFiles: 1,
         init: function() {
-          this.defaultOptions
           this.on("maxfilesexceeded", (file) => {
             this.removeAllFiles(true);
             this.addFile(file);
