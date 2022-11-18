@@ -7,5 +7,10 @@
   "url": "URL",
   "image": "Image",
   "video": "Video",
-  "audio": "Audio"
+  "audio": "Audio",
+  "deadline": "Expiration Time(s)",
+  "password": "Password",
+  "submit": "Submit",
+  "editor": "Editor",
+  "delete": "Delete"
 }

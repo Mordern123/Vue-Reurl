@@ -7,5 +7,10 @@
   "url": "網址",
   "image": "圖片",
   "video": "影片",
-  "audio": "語音"
+  "audio": "語音",
+  "deadline": "有效時間（單位：秒）",
+  "password": "密碼",
+  "submit": "送出",
+  "editor": "編輯",
+  "delete": "刪除"
 }
