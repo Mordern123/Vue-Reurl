@@ -29,6 +29,7 @@ const customTheme = {
 };
 
 export default defineComponent({
+  props: ['imgUrl'],
   data() {
     return {
       instance: null as any,
@@ -36,13 +37,13 @@ export default defineComponent({
   },
   
   methods: {
-    init() {
+    init(imgPath: any) {
       this.instance = new ImageEditor(
         document.querySelector("#tui-image-editor") as any,
         {
           includeUI: {
             loadImage: {
-              path: "https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/c1d7a1feb60346449c1a64893888989a~tplv-k3u1fbpfcp-watermark.image",
+              path: imgPath,
               name: "image",
             },
             initMenu: "draw",
@@ -64,10 +65,14 @@ export default defineComponent({
 			
     },
     },
-    mounted() {
-      this.init();
-
-    },
+    // mounted() {
+    //   this.init(this.imgUrl);
+    // },
+    watch: {
+      imgUrl: function () {
+        this.init(this.imgUrl);
+      }
+    }
   });
 </script>
   

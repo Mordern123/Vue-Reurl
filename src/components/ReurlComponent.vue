@@ -54,13 +54,13 @@
               {{ shortUrl }}
             </div>
             <button class="reurl-btn btn btn-outline-secondary" type="button">
-              <i class="bi bi-send-check"></i>
-            </button>
-            <button class="reurl-btn btn btn-outline-secondary" type="button">
               <i class="bi bi-qr-code-scan"></i>
             </button>
             <button class="reurl-btn btn btn-outline-secondary" type="button">
               <i class="bi bi-clipboard-check"></i>
+            </button>
+            <button class="reurl-btn btn btn-outline-secondary" type="button">
+              <i class="bi bi-send-check"></i>
             </button>
           </div>
         </div>
@@ -97,6 +97,7 @@
                   class="edit-btn btn btn-outline-primary px-4"
                   data-bs-toggle="modal"
                   data-bs-target="#imgModal"
+                  :disabled="isImgEdit"
                 >
                   <i class="bi bi-pencil-square mr-2"></i>{{ $t("editor") }}
                 </button>
@@ -132,7 +133,7 @@
             </div>
           </div>
         </div>
-        <button class="upload-btn col-12" @click="uploadImg()">
+        <button class="upload-btn col-12 mb-3" @click="uploadImg()">
           {{ $t("submit") }}
         </button>
         <div v-if="showImg" class="input-group">
@@ -143,13 +144,13 @@
             {{ shortImg }}
           </div>
           <button class="reurl-btn btn btn-outline-secondary" type="button">
-            <i class="bi bi-send-check"></i>
-          </button>
-          <button class="reurl-btn btn btn-outline-secondary" type="button">
             <i class="bi bi-qr-code-scan"></i>
           </button>
           <button class="reurl-btn btn btn-outline-secondary" type="button">
             <i class="bi bi-clipboard-check"></i>
+            <button class="reurl-btn btn btn-outline-secondary" type="button">
+            <i class="bi bi-send-check"></i>
+          </button>
           </button>
         </div>
       </div>
@@ -170,7 +171,7 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <ImageEditor></ImageEditor>
+          <ImageEditor :imgUrl="imgUrl"></ImageEditor>
         </div>
       </div>
     </div>
@@ -182,7 +183,6 @@ import { defineComponent } from "vue";
 import axios from "axios";
 import Dropzone from "dropzone";
 import ImageEditor from "@/components/imageComponent/ImageEditor.vue";
-import { data } from "jquery";
 
 interface categoryMapItem {
   name: string;
@@ -200,6 +200,8 @@ export default defineComponent({
       showEditor: false,
       myDropzone: null as any,
       message: "",
+      isImgEdit: true,
+      imgUrl: "",
       showUrl: false,
       shortUrl: "",
       showImg: false,
@@ -267,7 +269,8 @@ export default defineComponent({
       this.showEditor = true;
     },
     addImg() {
-      // let vm = this;
+      /* eslint-disable  @typescript-eslint/no-this-alias */
+      const vm = this;
       this.myDropzone = new Dropzone("form.dropzone", {
         url: "https://privatutle-bcdlmykzda-de.a.run.app/api/media/image",
         autoProcessQueue: false,
@@ -283,13 +286,17 @@ export default defineComponent({
             this.addFile(file);
           });
           this.on("thumbnail", (file, dataURL) => {
-            console.log(dataURL)
+            vm.imgUrl = dataURL;
+            vm.isImgEdit = false;
+            vm.showImg = false;
           });
           this.on("sending", (file, xhr, formData) => {
             formData.append("expirationTime", "3000");
           });
-          this.on("success", (files: any, response: any) => {
-            console.log(response);
+          this.on("success", (flie: any, response: any) => {
+            vm.shortImg = response.shortUrl;
+            vm.showImg = true;
+            vm.isImgEdit = true;
           });
         },
       });
