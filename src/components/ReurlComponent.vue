@@ -267,6 +267,7 @@ export default defineComponent({
       this.showEditor = true;
     },
     addImg() {
+      // let vm = this;
       this.myDropzone = new Dropzone("form.dropzone", {
         url: "https://privatutle-bcdlmykzda-de.a.run.app/api/media/image",
         autoProcessQueue: false,
@@ -280,6 +281,9 @@ export default defineComponent({
           this.on("maxfilesexceeded", (file) => {
             this.removeAllFiles(true);
             this.addFile(file);
+          });
+          this.on("thumbnail", (file, dataURL) => {
+            console.log(dataURL)
           });
           this.on("sending", (file, xhr, formData) => {
             formData.append("expirationTime", "3000");
