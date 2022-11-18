@@ -1,6 +1,7 @@
 <template>
   <div class="img-container">
     <div id="tui-image-editor"></div>
+    <button class="save-btn" @click="saveImg()">保存</button>
   </div>
 </template>
   
@@ -18,8 +19,8 @@ const customTheme = {
   "common.border": "1px solid #333",
   "header.backgroundImage": "none",
   "header.border": "0px",
-  // "loadButton.display": "none",
-  // "downloadButton.display": "none", 
+  "loadButton.display": "none",
+  "downloadButton.display": "none", 
   "menu.normalIcon.color": "#8a8a8a",
   "menu.activeIcon.color": "#555555",
   "menu.disabledIcon.color": "#ccc",
@@ -37,7 +38,7 @@ export default defineComponent({
   },
   
   methods: {
-    init(imgPath: any) {
+    initEditor(imgPath: any) {
       this.instance = new ImageEditor(
         document.querySelector("#tui-image-editor") as any,
         {
@@ -62,17 +63,27 @@ export default defineComponent({
 			(document.getElementsByClassName("tie-btn-crop tui-image-editor-item normal") as any)[0].style.display = "none";
 			(document.getElementsByClassName("tie-btn-mask tui-image-editor-item normal") as any)[0].style.display = "none";
 			(document.getElementsByClassName("tui-image-editor-header") as any)[0].style.minWidth = "100%";
-			
     },
-    },
-    // mounted() {
-    //   this.init(this.imgUrl);
-    // },
-    watch: {
-      imgUrl: function () {
-        this.init(this.imgUrl);
+    saveImg() {
+      console.log()
+      const base64String = this.instance.toDataURL() // base64 文件
+      const data = window.atob(base64String.split(',')[1]);
+      const ia = new Uint8Array(data.length);
+      for (let i = 0; i < data.length; i++) {
+        ia[i] = data.charCodeAt(i)
       }
+      const blob = new Blob([ia], { type: 'image/png'});// blob 文件
+      const form = new FormData();
+      form.append('image', blob, 'img.png');
+      this.$emit("emit-file", form , blob, base64String);
+      // upload file
     }
+  },
+  watch: {
+    imgUrl: function () {
+      this.initEditor(this.imgUrl);
+    }
+  }
   });
 </script>
   

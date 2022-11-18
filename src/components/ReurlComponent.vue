@@ -171,7 +171,7 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <ImageEditor :imgUrl="imgUrl"></ImageEditor>
+          <ImageEditor :imgUrl="imgUrl" @emit-file="getEditImg"></ImageEditor>
         </div>
       </div>
     </div>
@@ -236,6 +236,12 @@ export default defineComponent({
   },
 
   methods: {
+    getEditImg(form: any, blob: Blob, base64: any) {
+      let editImg = { name: `Img.${blob.type}`, size: blob.size , path: base64};
+      this.myDropzone.removeAllFiles();
+      this.myDropzone.displayExistingFile(editImg, base64);
+      this.myDropzone.addFile(editImg);
+    },
     getImg(img: string) {
       return require(`@/assets/icons/${img}`);
     },
@@ -290,6 +296,9 @@ export default defineComponent({
             vm.isImgEdit = false;
             vm.showImg = false;
           });
+          // this.on("addedfile", (file) => {
+          //   console.log(file)
+          // })
           this.on("sending", (file, xhr, formData) => {
             formData.append("expirationTime", "3000");
           });
@@ -303,9 +312,8 @@ export default defineComponent({
     },
   },
   mounted() {
-    Dropzone.autoDiscover = false;
     this.addImg();
-  },
+  }
 });
 </script>
 
