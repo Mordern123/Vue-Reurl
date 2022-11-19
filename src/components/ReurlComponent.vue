@@ -117,7 +117,7 @@
                 class="imgtext-setting col-12"
                 type="text"
                 placeholder="example: 3000"
-                oninput="if(value>259200)value=259200;if(value<1)value=1"
+                oninput="if(value>259200)value=259200;if(value<1)value=1;value=value.replace(/[^\d]/g,'')"
               />
             </div>
             <div class="col-12">
@@ -165,10 +165,9 @@
 
   <div class="modal fade" id="imgModal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-xl">
-      <div class="modal-content">
+      <div class="modal-content" style="background: #3B4252">
         <div class="modal-header">
-          <h5 class="modal-title" >圖片編輯器</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close" style="color: white"></button>
         </div>
         <div class="modal-body">
           <ImageEditor :imgUrl="imgUrl" @emit-file="getEditImg"></ImageEditor>
@@ -236,11 +235,15 @@ export default defineComponent({
   },
 
   methods: {
-    getEditImg(form: any, blob: Blob, base64: any) {
-      let editImg = { name: `Img.${blob.type}`, size: blob.size , path: base64};
-      this.myDropzone.removeAllFiles();
-      this.myDropzone.displayExistingFile(editImg, base64);
-      this.myDropzone.addFile(editImg);
+    getEditImg(form: any, blob: Blob, base64: string) {
+      let editImg = { 
+        name: 'Img',
+        size: blob.size,
+        imageUrl: base64,
+      };
+      let file = new File([blob], "image.png");
+      this.myDropzone.addFile(file);
+      document.getElementsByClassName('dz-image')[0].innerHTML = `<img data-dz-thumbnail src=${base64}>`;
     },
     getImg(img: string) {
       return require(`@/assets/icons/${img}`);
@@ -251,7 +254,7 @@ export default defineComponent({
     getShortUrl() {
       axios
         .post(
-          `https://privatutle-bcdlmykzda-de.a.run.app/api/short/`,
+          `https://privatutle-bcdlmykzda-de.a.run.app/api/short`,
           { leadUrl: this.message }
           // {
           //   headers: {
@@ -260,13 +263,13 @@ export default defineComponent({
           // }
         )
         .then((res) => {
-          console.log(res.data);
           this.showUrl = true;
           this.shortUrl = res.data.shortUrl;
         });
     },
     deleteImg() {
       this.myDropzone.removeAllFiles(true);
+      this.isImgEdit = true;
     },
     uploadImg() {
       this.myDropzone.processQueue();
@@ -281,28 +284,24 @@ export default defineComponent({
         url: "https://privatutle-bcdlmykzda-de.a.run.app/api/media/image",
         autoProcessQueue: false,
         paramName: "image",
-        addRemoveLinks: true,
-        dictCancelUpload: "上傳圖片中",
-        dictRemoveFile: "點此刪除圖片",
         acceptedFiles: ".jpeg,.jpg,.png,.gif,.bpm,.webp",
         maxFiles: 1,
+        resizeWidth: 1000,
+        resizeHeight: 1000,
         init: function () {
           this.on("maxfilesexceeded", (file) => {
             this.removeAllFiles(true);
             this.addFile(file);
           });
           this.on("thumbnail", (file, dataURL) => {
-            vm.imgUrl = dataURL;
-            vm.isImgEdit = false;
+            vm.imgUrl = file.dataURL!;
             vm.showImg = false;
+            vm.isImgEdit = false;
           });
-          // this.on("addedfile", (file) => {
-          //   console.log(file)
-          // })
-          this.on("sending", (file, xhr, formData) => {
+          this.on("sending", (file: any, xhr: any, formData: any) => {
             formData.append("expirationTime", "3000");
           });
-          this.on("success", (flie: any, response: any) => {
+          this.on("success", (file: any, response: any) => {
             vm.shortImg = response.shortUrl;
             vm.showImg = true;
             vm.isImgEdit = true;

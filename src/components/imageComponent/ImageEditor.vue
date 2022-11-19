@@ -1,7 +1,7 @@
 <template>
   <div class="img-container">
     <div id="tui-image-editor"></div>
-    <button class="save-btn" @click="saveImg()">保存</button>
+    <button class="save-btn" @click="saveImg()">Save</button>
   </div>
 </template>
   
@@ -17,6 +17,7 @@ const customTheme = {
   "common.bisize.height": "0px",
   "common.backgroundImage": "none",
   "common.border": "1px solid #333",
+  "common.backgroundColor": "#545f75",
   "header.backgroundImage": "none",
   "header.border": "0px",
   "loadButton.display": "none",
@@ -47,15 +48,12 @@ export default defineComponent({
               path: imgPath,
               name: "image",
             },
-            initMenu: "draw",
             menuBarPosition: "bottom",
 						theme: customTheme,
           },
-        cssMaxWidth: 400,
-        cssMaxHeight: 400,
         }
       );
-			(document.getElementsByClassName("tui-image-editor-help-menu top") as any)[0].style.width = "80%";
+      (document.getElementsByClassName("tui-image-editor-main") as any)[0].style.top = "45px";
 			(document.getElementsByClassName("tui-image-editor-help-menu top") as any)[0].style.display = "none";
 			(document.getElementsByClassName("tui-image-editor-icpartition") as any)[1].style.display = "none";
 			(document.getElementsByClassName("tie-btn-rotate tui-image-editor-item normal") as any)[0].style.display = "none";
@@ -63,9 +61,9 @@ export default defineComponent({
 			(document.getElementsByClassName("tie-btn-crop tui-image-editor-item normal") as any)[0].style.display = "none";
 			(document.getElementsByClassName("tie-btn-mask tui-image-editor-item normal") as any)[0].style.display = "none";
 			(document.getElementsByClassName("tui-image-editor-header") as any)[0].style.minWidth = "100%";
+			(document.getElementsByClassName("tui-image-editor-menu") as any)[0].style.backgroundColor = "rgb(47, 52, 62)";
     },
     saveImg() {
-      console.log()
       const base64String = this.instance.toDataURL() // base64 文件
       const data = window.atob(base64String.split(',')[1]);
       const ia = new Uint8Array(data.length);
@@ -73,9 +71,9 @@ export default defineComponent({
         ia[i] = data.charCodeAt(i)
       }
       const blob = new Blob([ia], { type: 'image/png'});// blob 文件
-      const form = new FormData();
+      const form = new FormData()
       form.append('image', blob, 'img.png');
-      this.$emit("emit-file", form , blob, base64String);
+      this.$emit("emit-file", ia , blob, base64String);
       // upload file
     }
   },
