@@ -71,9 +71,7 @@ export default defineComponent({
         ia[i] = data.charCodeAt(i)
       }
       const blob = new Blob([ia], { type: 'image/png'});// blob 文件
-      const form = new FormData()
-      form.append('image', blob, 'img.png');
-      this.$emit("emit-file", ia , blob, base64String);
+      this.$emit("emit-file", blob, base64String);
       // upload file
     }
   },

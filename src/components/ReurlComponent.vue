@@ -47,10 +47,7 @@
             </button>
           </div>
           <div v-if="showUrl" class="input-group">
-            <div
-              class="form-control"
-              style="background-color: #e6ecf8"
-            >
+            <div class="form-control output-short">
               {{ shortUrl }}
             </div>
             <button class="reurl-btn btn btn-outline-secondary" type="button">
@@ -128,7 +125,8 @@
                 class="imgtext-setting col-12"
                 type="text"
                 placeholder="example: 123456"
-                oninput="if(value.length>18)value=value.slice(0,18)"
+                oncontextmenu="return false;"
+                oninput="if(value.length>18)value=value.slice(0,18);value=value.replace(/[\u4e00-\u9fa5]/g,'')"
               />
             </div>
           </div>
@@ -137,10 +135,7 @@
           {{ $t("submit") }}
         </button>
         <div v-if="showImg" class="input-group">
-          <div
-            class="form-control"
-            style="background-color: #e6ecf8"
-          >
+          <div class="form-control output-short">
             {{ shortImg }}
           </div>
           <button class="reurl-btn btn btn-outline-secondary" type="button">
@@ -196,7 +191,6 @@ export default defineComponent({
   },
   data() {
     return {
-      showEditor: false,
       myDropzone: null as any,
       message: "",
       isImgEdit: true,
@@ -235,12 +229,7 @@ export default defineComponent({
   },
 
   methods: {
-    getEditImg(form: any, blob: Blob, base64: string) {
-      let editImg = { 
-        name: 'Img',
-        size: blob.size,
-        imageUrl: base64,
-      };
+    getEditImg(blob: Blob, base64: string) {
       let file = new File([blob], "image.png");
       this.myDropzone.addFile(file);
       document.getElementsByClassName('dz-image')[0].innerHTML = `<img data-dz-thumbnail src=${base64}>`;
@@ -274,10 +263,7 @@ export default defineComponent({
     uploadImg() {
       this.myDropzone.processQueue();
     },
-    editImg() {
-      this.showEditor = true;
-    },
-    addImg() {
+    dropImg() {
       /* eslint-disable  @typescript-eslint/no-this-alias */
       const vm = this;
       this.myDropzone = new Dropzone("form.dropzone", {
@@ -286,8 +272,6 @@ export default defineComponent({
         paramName: "image",
         acceptedFiles: ".jpeg,.jpg,.png,.gif,.bpm,.webp",
         maxFiles: 1,
-        resizeWidth: 1000,
-        resizeHeight: 1000,
         init: function () {
           this.on("maxfilesexceeded", (file) => {
             this.removeAllFiles(true);
@@ -298,7 +282,7 @@ export default defineComponent({
             vm.showImg = false;
             vm.isImgEdit = false;
           });
-          this.on("sending", (file: any, xhr: any, formData: any) => {
+          this.on("sending", (file, xhr, formData) => {
             formData.append("expirationTime", "3000");
           });
           this.on("success", (file: any, response: any) => {
@@ -311,7 +295,7 @@ export default defineComponent({
     },
   },
   mounted() {
-    this.addImg();
+    this.dropImg();
   }
 });
 </script>
