@@ -1,0 +1,18 @@
+.output-short {
+    background-color: #e6ecf8;
+    overflow: auto;
+}
+.reurl-raw {
+    color: black;
+    .reurl-btn {
+        background-color: #545f75;
+    }
+    .reurl-btn:hover {
+        .bi {
+            color: rgba(255, 255, 255) ;
+        }
+    }
+    .bi {
+        color: rgba(255, 255, 255, 0.5) ;
+    }
+}
