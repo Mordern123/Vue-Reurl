@@ -1,7 +1,10 @@
 <template>
   <div class="img-container">
     <div id="tui-image-editor"></div>
-    <button class="save-btn" @click="saveImg()">Save</button>
+    <button
+      class="save-btn"
+      @click="saveImg()"
+    >Save</button>
   </div>
 </template>
   
@@ -10,7 +13,7 @@ import { defineComponent } from "vue";
 import "tui-image-editor/dist/tui-image-editor.css";
 import "tui-color-picker/dist/tui-color-picker.css";
 import ImageEditor from "tui-image-editor";
-  
+
 const customTheme = {
   "common.bi.image": "",
   "common.bisize.width": "0px",
@@ -21,7 +24,7 @@ const customTheme = {
   "header.backgroundImage": "none",
   "header.border": "0px",
   "loadButton.display": "none",
-  "downloadButton.display": "none", 
+  "downloadButton.display": "none",
   "menu.normalIcon.color": "#8a8a8a",
   "menu.activeIcon.color": "#555555",
   "menu.disabledIcon.color": "#ccc",
@@ -31,13 +34,13 @@ const customTheme = {
 };
 
 export default defineComponent({
-  props: ['imgUrl'],
+  props: ["imgUrl"],
   data() {
     return {
       instance: null as any,
     };
   },
-  
+
   methods: {
     initEditor(imgPath: any) {
       this.instance = new ImageEditor(
@@ -49,38 +52,64 @@ export default defineComponent({
               name: "image",
             },
             menuBarPosition: "bottom",
-						theme: customTheme,
+            theme: customTheme,
           },
         }
       );
-      (document.getElementsByClassName("tui-image-editor-main") as any)[0].style.top = "45px";
-			(document.getElementsByClassName("tui-image-editor-help-menu top") as any)[0].style.display = "none";
-			(document.getElementsByClassName("tui-image-editor-icpartition") as any)[1].style.display = "none";
-			(document.getElementsByClassName("tie-btn-rotate tui-image-editor-item normal") as any)[0].style.display = "none";
-			(document.getElementsByClassName("tie-btn-icon tui-image-editor-item normal") as any)[0].style.display = "none";
-			(document.getElementsByClassName("tie-btn-crop tui-image-editor-item normal") as any)[0].style.display = "none";
-			(document.getElementsByClassName("tie-btn-mask tui-image-editor-item normal") as any)[0].style.display = "none";
-			(document.getElementsByClassName("tui-image-editor-header") as any)[0].style.minWidth = "100%";
-			(document.getElementsByClassName("tui-image-editor-menu") as any)[0].style.backgroundColor = "rgb(47, 52, 62)";
+      (
+        document.getElementsByClassName("tui-image-editor-main") as any
+      )[0].style.top = "45px";
+      (
+        document.getElementsByClassName("tui-image-editor-help-menu top") as any
+      )[0].style.display = "none";
+      (
+        document.getElementsByClassName("tui-image-editor-icpartition") as any
+      )[1].style.display = "none";
+      (
+        document.getElementsByClassName(
+          "tie-btn-rotate tui-image-editor-item normal"
+        ) as any
+      )[0].style.display = "none";
+      (
+        document.getElementsByClassName(
+          "tie-btn-icon tui-image-editor-item normal"
+        ) as any
+      )[0].style.display = "none";
+      (
+        document.getElementsByClassName(
+          "tie-btn-crop tui-image-editor-item normal"
+        ) as any
+      )[0].style.display = "none";
+      (
+        document.getElementsByClassName(
+          "tie-btn-mask tui-image-editor-item normal"
+        ) as any
+      )[0].style.display = "none";
+      (
+        document.getElementsByClassName("tui-image-editor-header") as any
+      )[0].style.minWidth = "100%";
+      (
+        document.getElementsByClassName("tui-image-editor-menu") as any
+      )[0].style.backgroundColor = "rgb(47, 52, 62)";
     },
     saveImg() {
-      const base64String = this.instance.toDataURL() // base64 文件
-      const data = window.atob(base64String.split(',')[1]);
+      const base64String = this.instance.toDataURL(); // base64 文件
+      const data = window.atob(base64String.split(",")[1]);
       const ia = new Uint8Array(data.length);
       for (let i = 0; i < data.length; i++) {
-        ia[i] = data.charCodeAt(i)
+        ia[i] = data.charCodeAt(i);
       }
-      const blob = new Blob([ia], { type: 'image/png'});// blob 文件
+      const blob = new Blob([ia], { type: "image/png" }); // blob 文件
       this.$emit("emit-file", blob, base64String);
       // upload file
-    }
+    },
   },
   watch: {
     imgUrl: function () {
       this.initEditor(this.imgUrl);
-    }
-  }
-  });
+    },
+  },
+});
 </script>
   
 <style scoped lang="scss">

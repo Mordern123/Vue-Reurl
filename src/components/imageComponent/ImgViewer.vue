@@ -1,20 +1,24 @@
 <template>
   <div class="d-flex flex-col flex-xl-row justify-content-between">
     <form class="dropzone imgurl-raw col-xl-4 mb-3">
-      <div class="dz-message" data-dz-message>
+      <div
+        class="dz-message"
+        data-dz-message
+      >
         <span>
-          <i class="bi bi-image" style="font-size: 44px"></i><br />
+          <i
+            class="bi bi-image"
+            style="font-size: 44px"
+          ></i><br />
           Drag and Drop File<br />
           or<br />
         </span>
-        <span
-          style="
+        <span style="
             background-color: azure;
             border-radius: 10px;
             padding: 3px;
-          "
-        >
-        Browser
+          ">
+          Browser
         </span>
       </div>
     </form>
@@ -24,7 +28,7 @@
           class="btn-group"
           role="group"
         >
-          <button 
+          <button
             class="edit-btn btn btn-outline-primary px-4"
             data-bs-toggle="modal"
             data-bs-target="#imgModal"
@@ -37,7 +41,7 @@
             @click="deleteImg"
           >
             <i class="bi bi-trash3 mr-2"></i>{{ $t("delete") }}
-            </button>
+          </button>
         </div>
       </div>
       <div class="col-12">
@@ -65,32 +69,64 @@
       </div>
     </div>
   </div>
-  <button class="upload-btn col-12 mb-3" @click="uploadImg()">
+  <button
+    class="upload-btn col-12 mb-3"
+    @click="uploadImg()"
+  >
     {{ $t("submit") }}
   </button>
-  <div v-if="showImg" class="input-group">
+  <div
+    v-if="showImg"
+    class="input-group"
+  >
     <div class="form-control output-short">
       {{ shortImg }}
     </div>
-    <button class="reurl-btn btn btn-outline-secondary" type="button">
+    <button
+      class="reurl-btn btn btn-outline-secondary"
+      type="button"
+    >
       <i class="bi bi-qr-code-scan"></i>
     </button>
-    <button class="reurl-btn btn btn-outline-secondary" type="button">
+    <button
+      class="reurl-btn btn btn-outline-secondary"
+      type="button"
+    >
       <i class="bi bi-clipboard-check"></i>
-      <button class="reurl-btn btn btn-outline-secondary" type="button">
-      <i class="bi bi-send-check"></i>
-    </button>
+      <button
+        class="reurl-btn btn btn-outline-secondary"
+        type="button"
+      >
+        <i class="bi bi-send-check"></i>
+      </button>
     </button>
   </div>
 
-  <div class="modal fade" id="imgModal" tabindex="-1" aria-hidden="true">
+  <div
+    class="modal fade"
+    id="imgModal"
+    tabindex="-1"
+    aria-hidden="true"
+  >
     <div class="modal-dialog modal-xl">
-      <div class="modal-content" style="background: #3B4252">
+      <div
+        class="modal-content"
+        style="background: #3B4252"
+      >
         <div class="modal-header">
-          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close" style="color: white"></button>
+          <button
+            type="button"
+            class="btn-close btn-close-white"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+            style="color: white"
+          ></button>
         </div>
         <div class="modal-body">
-          <ImageEditor :imgUrl="imgUrl" @emit-file="getEditImg"></ImageEditor>
+          <ImageEditor
+            :imgUrl="imgUrl"
+            @emit-file="getEditImg"
+          ></ImageEditor>
         </div>
       </div>
     </div>
@@ -101,10 +137,10 @@
 import { defineComponent } from "vue";
 import Dropzone from "dropzone";
 import ImageEditor from "@/components/imageComponent/ImageEditor.vue";
-  
+
 export default defineComponent({
   components: {
-    ImageEditor
+    ImageEditor,
   },
   data() {
     return {
@@ -115,7 +151,7 @@ export default defineComponent({
       shortImg: "",
     };
   },
-  
+
   methods: {
     getDataUrl(url: string) {
       this.imgUrl = url;
@@ -123,7 +159,9 @@ export default defineComponent({
     getEditImg(blob: Blob, base64: string) {
       let file = new File([blob], "image.png");
       this.myDropzone.addFile(file);
-      document.getElementsByClassName('dz-image')[0].innerHTML = `<img data-dz-thumbnail src=${base64}>`;
+      document.getElementsByClassName(
+        "dz-image"
+      )[0].innerHTML = `<img data-dz-thumbnail src=${base64}>`;
     },
     deleteImg() {
       this.myDropzone.removeAllFiles(true);
@@ -146,7 +184,7 @@ export default defineComponent({
             this.removeAllFiles(true);
             this.addFile(file);
           });
-          this.on("thumbnail", (file, dataURL) => {
+          this.on("thumbnail", (file) => {
             vm.imgUrl = file.dataURL!;
             vm.showImg = false;
             vm.isImgEdit = false;
@@ -165,7 +203,7 @@ export default defineComponent({
   },
   mounted() {
     this.dropImg();
-  }
+  },
 });
 </script>
   

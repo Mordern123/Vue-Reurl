@@ -5,9 +5,8 @@
 .animate__animated.animate__rotateInDownLeft {
     --animation-duration: 2s;
 }
-.top-container {
+.title-container {
     color: #282C34;
-
     .top-detail {
         width: 60%;
         position: relative;
@@ -35,4 +34,7 @@
             color:	#8E8E8E;
         }
     }
+}
+.content-container {
+    border-top: 1px solid #9da0a5;
 }

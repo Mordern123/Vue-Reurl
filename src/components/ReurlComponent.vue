@@ -1,5 +1,5 @@
 <template>
-  <div class="all-content">
+  <div class="reurl-all-content">
     <ul class="title-content nav nav-pills justify-content-between">
       <li
         class="col-2 nav-item"
@@ -7,38 +7,42 @@
         :key="item.id"
       >
         <a
-          v-if="index == 0"
-          :href="item.id"
-          class="nav-link active d-flex justify-content-center"
-          data-bs-toggle="tab"
-          @click="emitTitle(item.title)"
-          ><img class="mr-2" :src="getImg(item.img)" />{{
-            $t(`${item.name}`)
-          }}</a
-        >
-        <a
-          v-else
           :href="item.id"
           class="nav-link d-flex justify-content-center"
+          :class="index === 0 ? 'active' : ''"
           data-bs-toggle="tab"
           @click="emitTitle(item.title)"
-          ><img class="mr-2" :src="getImg(item.img)" />{{
+        ><img
+            class="mr-2"
+            :src="getImg(item.img)"
+          />{{
             $t(`${item.name}`)
-          }}</a
-        >
+          }}</a>
       </li>
     </ul>
     <div class="raw-content tab-content">
-      <div class="tab-pane fade show active" id="reurl">
+      <div
+        class="tab-pane fade show active"
+        id="reurl"
+      >
         <UrlViewer></UrlViewer>
       </div>
-      <div class="tab-pane fade" id="imgurl">
+      <div
+        class="tab-pane fade"
+        id="imgurl"
+      >
         <ImgViewer></ImgViewer>
       </div>
-      <div class="tab-pane fade" id="videourl">
+      <div
+        class="tab-pane fade"
+        id="videourl"
+      >
         <p class="videourl-raw">Messages tab content ...</p>
       </div>
-      <div class="tab-pane fade" id="audiourl">
+      <div
+        class="tab-pane fade"
+        id="audiourl"
+      >
         <p class="testourl-raw">Messages tab content ...</p>
       </div>
     </div>
@@ -60,7 +64,7 @@ interface categoryMapItem {
 export default defineComponent({
   components: {
     UrlViewer,
-    ImgViewer
+    ImgViewer,
   },
   data() {
     return {
