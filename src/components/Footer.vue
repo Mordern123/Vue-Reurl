@@ -1,6 +1,7 @@
 <template>
   <div class="footer-container">
-    <p>Copyright © 2022-2023 | Created by Eric, Marc, Adam. | Version 2.0.1</p>
+    <p>Copyright © 2022-2023</p>
+    <p>Created by Eric, Marc, Adam | Version 2.0.1</p>
   </div>
 </template>
   
