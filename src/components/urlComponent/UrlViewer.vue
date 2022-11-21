@@ -28,9 +28,11 @@
       >
         <i class="bi bi-qr-code-scan"></i>
       </button>
+      
       <button
         class="reurl-btn btn btn-outline-secondary"
         type="button"
+        data-bs-toggle="tooltip" data-bs-placement="top" title="複製網址"
         @click="clickCopy()"
       >
         <i class="bi bi-clipboard-check"></i>
@@ -78,7 +80,7 @@ export default defineComponent({
         });
     },
     clickCopy() {
-      console.log(123)
+      navigator.clipboard.writeText(this.shortUrl);
     },
   },
   mounted() {
