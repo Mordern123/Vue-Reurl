@@ -1,0 +1,17 @@
+.img-container {
+  height: 700px;
+  position: relative;
+  .save-btn {
+    position: absolute;
+    right: 5px;
+    top: 10px;
+    color: white;
+    background-color: #fdba3b;
+    padding: 5px 30px;
+    border-radius: 20px;
+  }
+  .save-btn:hover {
+    background-color: #f5c670;
+    
+  }
+}
