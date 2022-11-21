@@ -1,0 +1,66 @@
+.imgurl-raw {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 219px;
+    border-radius: 10px;
+    border: dashed rgba(84, 95, 117, 0.5);
+    background-color: rgba(84, 95, 117, 0.01);
+    color: #2c3e50;
+    font-weight: bold;
+    font-size: 20px;
+    cursor: pointer;
+}
+.edit-btn:disabled {
+    color: #2c3e50;
+    font-weight: bold;
+    border: 1px solid rgba(84, 95, 117, 0.6);
+}
+.edit-btn {
+    color: #2c3e50;
+    font-weight: bold;
+    border: 1px solid rgba(84, 95, 117, 0.6);
+}
+.edit-btn:hover {
+    color: white;
+    font-weight: bolder;
+    background-color: rgba(84, 95, 117, 0.9);
+}
+.delete-btn {
+    color: rgb(231, 53, 53);
+    font-weight: bold;
+    border: 1px solid rgb(231, 53, 53, 0.6);
+}
+.delete-btn:hover {
+    color: white;
+    font-weight: bolder;
+    background-color: rgb(231, 53, 53, 0.9);
+}
+.imgtitle-setting {
+    background-color: rgba(84, 95, 117, 0.13);
+    border-radius: 5px;
+}
+.imgtext-setting {
+    margin-bottom: 20px;
+    border: 1px solid rgba(84, 95, 117, 0.8);
+    border-radius: 5px;
+    padding: 5px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+}
+.upload-btn {
+    background-color: #545f75;
+    color: white;
+    font-weight: bold;
+    padding: 5px;
+    border-radius: 5px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+}
+.upload-btn:hover {
+    background-color: #6a768d;
+    color: white;
+    font-weight: bolder;
+}
+.output-short {
+    background-color: #e6ecf8;
+    overflow: auto;
+}

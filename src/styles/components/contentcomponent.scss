@@ -1,0 +1,26 @@
+.content-all-container {
+    width: 60%;
+    padding-top: 10px;
+    .title-top-content {
+        font-size: 28px;
+        font-weight: bolder;
+        color: #436de2;
+    }
+    .description-top-content {
+        font-size: 16px;
+        color: #6d83a8;
+    }
+    .block-content {
+        width: 30%;
+        .title-content {
+            font-size: 20px;
+            font-weight: bold;
+            color: rgba($color: #3B4252, $alpha: 0.9);
+        }
+        .text-content {
+            font-size: 16px;
+            color: #52688b;
+            text-align: center;
+        }
+    }
+}
