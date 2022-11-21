@@ -86,5 +86,4 @@ export default defineComponent({
 
 <style scoped lang="scss">
 @import "../styles/components/header.scss";
-@import "../styles/global.scss";
 </style>

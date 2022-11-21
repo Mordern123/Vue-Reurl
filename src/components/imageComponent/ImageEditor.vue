@@ -60,8 +60,33 @@ export default defineComponent({
         document.getElementsByClassName("tui-image-editor-main") as any
       )[0].style.top = "45px";
       (
-        document.getElementsByClassName("tui-image-editor-help-menu top") as any
+        document.getElementsByClassName(
+          "tie-btn-deleteAll tui-image-editor-item help"
+        ) as any
       )[0].style.display = "none";
+      (
+        document.getElementsByClassName(
+          "tie-btn-delete tui-image-editor-item help"
+        ) as any
+      )[0].style.display = "none";
+      (
+        document.getElementsByClassName(
+          "tie-btn-reset tui-image-editor-item help"
+        ) as any
+      )[0].style.display = "none";
+      (
+        document.getElementsByClassName(
+          "tie-btn-redo tui-image-editor-item help"
+        ) as any
+      )[0].style.display = "none";
+      (
+        document.getElementsByClassName(
+          "tie-btn-history tui-image-editor-item help enabled"
+        ) as any
+      )[0].style.display = "none";
+      (
+        document.getElementsByClassName("tui-image-editor-item") as any
+      )[3].style.display = "none";
       (
         document.getElementsByClassName("tui-image-editor-icpartition") as any
       )[1].style.display = "none";
@@ -83,6 +108,11 @@ export default defineComponent({
       (
         document.getElementsByClassName(
           "tie-btn-mask tui-image-editor-item normal"
+        ) as any
+      )[0].style.display = "none";
+      (
+        document.getElementsByClassName(
+          "tie-btn-hand tui-image-editor-item help enabled"
         ) as any
       )[0].style.display = "none";
       (
