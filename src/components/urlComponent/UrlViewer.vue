@@ -31,6 +31,7 @@
       <button
         class="reurl-btn btn btn-outline-secondary"
         type="button"
+        @click="clickCopy()"
       >
         <i class="bi bi-clipboard-check"></i>
       </button>
@@ -51,6 +52,7 @@ import axios from "axios";
 export default defineComponent({
   data() {
     return {
+      localHref: "",
       message: "",
       showUrl: false,
       shortUrl: "",
@@ -58,7 +60,6 @@ export default defineComponent({
       shortImg: "",
     };
   },
-
   methods: {
     getShortUrl() {
       axios
@@ -73,9 +74,15 @@ export default defineComponent({
         )
         .then((res) => {
           this.showUrl = true;
-          this.shortUrl = res.data.shortUrl;
+          this.shortUrl = `${this.localHref}${res.data.shortUrl}`;
         });
     },
+    clickCopy() {
+      console.log(123)
+    },
+  },
+  mounted() {
+    this.localHref = document.location.href;
   },
 });
 </script>
