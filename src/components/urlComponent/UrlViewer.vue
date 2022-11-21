@@ -4,7 +4,7 @@
       <input
         type="text"
         class="form-control"
-        placeholder="輸入網址"
+        placeholder="Input URL"
         v-model="message"
       />
       <button
