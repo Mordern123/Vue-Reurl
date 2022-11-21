@@ -36,7 +36,10 @@
       </div>
       <div class="reurl-container d-flex flex-col align-items-center py-3">
         <ReurlComponent @emit-title="getEmitTitle"></ReurlComponent>
-        <i class="bi bi-arrow-down-short"></i>
+        <i
+          class="bi bi-arrow-down-short"
+          style="font-size: 28px"
+        ></i>
       </div>
       <div class="content-container d-flex justify-content-center py-3">
         <ContentComponent></ContentComponent>

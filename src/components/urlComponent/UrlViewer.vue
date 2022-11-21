@@ -1,6 +1,6 @@
 <template>
   <div class="reurl-raw d-flex flex-col">
-    <div class="input-group mb-3">
+    <div class="input-url-content input-group mb-3">
       <input
         type="text"
         class="form-control"
@@ -17,7 +17,7 @@
     </div>
     <div
       v-if="showUrl"
-      class="input-group"
+      class="input-url-content input-group"
     >
       <div class="form-control output-short">
         {{ shortUrl }}
