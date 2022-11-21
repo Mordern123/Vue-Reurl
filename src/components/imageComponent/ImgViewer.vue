@@ -52,6 +52,7 @@
           class="imgtext-setting col-12"
           type="text"
           placeholder="example: 3000"
+          v-model="expTime"
           oninput="if(value>259200)value=259200;if(value<1)value=1;value=value.replace(/[^\d]/g,'')"
         />
       </div>
@@ -63,6 +64,7 @@
           class="imgtext-setting col-12"
           type="text"
           placeholder="example: 123456"
+          v-model="password"
           oncontextmenu="return false;"
           oninput="if(value.length>18)value=value.slice(0,18);value=value.replace(/[\u4e00-\u9fa5]/g,'')"
         />
@@ -144,6 +146,8 @@ export default defineComponent({
   },
   data() {
     return {
+      expTime: "",
+      password: "",
       imgUrl: "",
       myDropzone: null as any,
       isImgEdit: true,
@@ -187,7 +191,10 @@ export default defineComponent({
             vm.isImgEdit = false;
           });
           this.on("sending", (file, xhr, formData) => {
-            formData.append("expirationTime", "3000");
+            formData.append("expirationTime", vm.expTime || "3000");
+            if(vm.password.length) {
+              formData.append("password", vm.password);
+            }
           });
           this.on("success", (file: any, response: any) => {
             vm.shortImg = response.shortUrl;
