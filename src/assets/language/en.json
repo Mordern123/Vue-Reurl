@@ -12,5 +12,13 @@
   "password": "Password",
   "submit": "Submit",
   "editor": "Editor",
-  "delete": "Delete"
+  "delete": "Delete",
+  "serviceGuarantee": "100% Service Guarantee",
+  "smallSlogan": "Anytime Anywhere, easily shorten URL",
+  "100Safety": "100% Safe",
+  "100SafetyText": "We won't share or download any files you upload, and all operations performs directly on the website. Besides you can set a password and expiration time for the data to ensure 100% content security.",
+  "100Support": "100% Support",
+  "100SupportText": "In addition to providing the web version of the service, we also provided the Line ChatBot, which is convenient for you to directly share URLs with friends and groups when chatting.",
+  "100Free": "100% Free",
+  "100FreeText": "You don't have to register or download any software, and you won't be disturbed by pop-up windows and any payment requirements. We will strive to provide the best user experience."
 }
