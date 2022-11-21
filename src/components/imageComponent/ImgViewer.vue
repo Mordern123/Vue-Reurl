@@ -38,7 +38,7 @@
           </button>
           <button
             class="delete-btn btn btn-outline-primary px-4"
-            @click="deleteImg"
+            @click="deleteImg()"
           >
             <i class="bi bi-trash3 mr-2"></i>{{ $t("delete") }}
           </button>
@@ -123,10 +123,10 @@
           ></button>
         </div>
         <div class="modal-body">
-          <ImageEditor
+          <ImgEditor
             :imgUrl="imgUrl"
             @emit-file="getEditImg"
-          ></ImageEditor>
+          ></ImgEditor>
         </div>
       </div>
     </div>
@@ -136,11 +136,11 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 import Dropzone from "dropzone";
-import ImageEditor from "@/components/imageComponent/ImageEditor.vue";
+import ImgEditor from "@/components/imageComponent/ImgEditor.vue";
 
 export default defineComponent({
   components: {
-    ImageEditor,
+    ImgEditor,
   },
   data() {
     return {
@@ -151,17 +151,14 @@ export default defineComponent({
       shortImg: "",
     };
   },
-
   methods: {
-    getDataUrl(url: string) {
-      this.imgUrl = url;
-    },
     getEditImg(blob: Blob, base64: string) {
       let file = new File([blob], "image.png");
       this.myDropzone.addFile(file);
       document.getElementsByClassName(
         "dz-image"
       )[0].innerHTML = `<img data-dz-thumbnail src=${base64}>`;
+      // myModal.hide()
     },
     deleteImg() {
       this.myDropzone.removeAllFiles(true);
