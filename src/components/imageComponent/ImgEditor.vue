@@ -4,6 +4,7 @@
     <button
       class="save-btn"
       @click="saveImg()"
+      data-bs-dismiss="modal"
     >Save</button>
   </div>
 </template>
@@ -54,6 +55,8 @@ export default defineComponent({
             menuBarPosition: "bottom",
             theme: customTheme,
           },
+          cssMaxHeight: 500,
+          cssMaxWidth: 350,
         }
       );
       (
@@ -143,6 +146,6 @@ export default defineComponent({
 </script>
   
 <style scoped lang="scss">
-@import "../../styles/components/imageComponent/imageeditor.scss";
+@import "../../styles/components/imageComponent/imgeditor.scss";
 </style>
   

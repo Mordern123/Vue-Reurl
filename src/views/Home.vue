@@ -42,6 +42,9 @@
         <ContentComponent></ContentComponent>
       </div>
     </div>
+    <div class="w-100">
+      <Footer></Footer>
+    </div>
   </div>
 </template>
 
@@ -50,6 +53,7 @@ import { defineComponent } from "vue";
 import Header from "@/components/Header.vue";
 import ReurlComponent from "@/components/ReurlComponent.vue";
 import ContentComponent from "@/components/ContentComponent.vue";
+import Footer from "@/components/Footer.vue";
 import "animate.css";
 
 export default defineComponent({
@@ -57,6 +61,7 @@ export default defineComponent({
     Header,
     ReurlComponent,
     ContentComponent,
+    Footer,
   },
   data() {
     return {
