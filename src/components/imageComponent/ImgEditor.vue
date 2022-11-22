@@ -1,6 +1,13 @@
 <template>
   <div class="img-container">
-    <div id="tui-image-editor"></div>
+    <div id="tui-image-editor">
+      <canvas>
+        <meta
+          name="viewport"
+          content="width=device-width, user-scalable=no"
+        />
+      </canvas>
+    </div>
     <button
       class="save-btn"
       @click="saveImg()"
@@ -55,8 +62,12 @@ export default defineComponent({
             menuBarPosition: "bottom",
             theme: customTheme,
           },
-          cssMaxHeight: 500,
-          cssMaxWidth: 350,
+          selectionStyle: {
+            cornerSize: 50,
+            rotatingPointOffset: 100,
+          },
+          cssMaxHeight: document.documentElement.clientHeight,
+          cssMaxWidth: document.documentElement.clientWidth,
         }
       );
       (
