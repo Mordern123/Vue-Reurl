@@ -34,6 +34,7 @@ export default defineComponent({
   mounted() {
     const route = useRoute();
     this.short = route.params["short"] as any;
+    this.goToShort();
   },
 });
 </script>
