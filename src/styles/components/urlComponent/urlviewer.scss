@@ -2,6 +2,15 @@
     color: black;
     .input-url-content {
         box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+        border-radius: 5px;
+    }
+    .error-url-content {
+        position: relative;
+        padding: 5px 10px;
+        box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+        border-radius: 5px;
+        background-color: rgb(231, 53, 53, 0.2);
+        color: rgb(231, 53, 53);
     }
     .reurl-btn {
         background-color: #545f75;
