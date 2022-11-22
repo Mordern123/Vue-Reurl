@@ -11,9 +11,20 @@
         class="reurl-btn btn btn-outline-secondary"
         type="button"
         @click="getShortUrl()"
+        :disabled="isUrlSend"
       >
         <i class="bi bi-send"></i>
       </button>
+    </div>
+    <div
+      class="error-url-content"
+      v-if="message.substring(0,4)!=='http' && message!==''"
+    >
+      <i
+        class="bi bi-caret-up-fill"
+        style="position: absolute; color: rgb(231, 53, 53, 0.2); top: -16px;"
+      ></i>
+      <div style="font-size: 14px">Only HTTP/HTTPS Accepted</div>
     </div>
     <div
       v-if="showUrl"
@@ -97,6 +108,7 @@ export default defineComponent({
   data() {
     return {
       localHref: "",
+      isUrlSend: true,
       message: "",
       showUrl: false,
       shortUrl: "",
@@ -130,6 +142,15 @@ export default defineComponent({
   },
   mounted() {
     this.localHref = document.location.href;
+  },
+  watch: {
+    message: function () {
+      if (this.message.substring(0, 4) === "http") {
+        this.isUrlSend = false;
+      } else {
+        this.isUrlSend = true;
+      }
+    },
   },
 });
 </script>

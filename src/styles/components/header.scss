@@ -1,6 +1,86 @@
+@media screen and (min-width: 1200px) {
+    .header-container {
+        padding: 0 50px;
+        height: 55px;
+        .dropdown-toggle {
+            font-size: 16px;
+        }
+        .dropdown-menu {
+            .dropdown-item {
+                font-size: 16px;
+            }
+        }
+        .login_username {
+            font-size: 16px;
+        }
+        .login_status {
+            height: 20px;
+            width: 2px;
+            margin: 0px 15px;
+        }
+        .login-btn {
+            padding: 0 5px;
+            min-width: 40px;
+            font-size: 16px;
+        }
+    }
+}
+@media screen and (min-width: 768px) and (max-width: 1200px) {
+    .header-container {
+        padding: 0 20px;
+        height: 50px;
+        .dropdown-toggle {
+            font-size: 16px;
+        }
+        .dropdown-menu {
+            .dropdown-item {
+                font-size: 16px;
+            }
+        }
+        .login_username {
+            font-size: 16px;
+        }
+        .login_status {
+            height: 20px;
+            width: 2px;
+            margin: 0px 14px;
+        }
+        .login-btn {
+            padding: 0 5px;
+            min-width: 40px;
+            font-size: 16px;
+        }
+    }
+}
+@media screen and (max-width: 768px) {
+    .header-container {
+        padding: 0 5px;
+        height: 45px;
+        .dropdown-toggle {
+            font-size: 14px;
+        }
+        .dropdown-menu {
+            .dropdown-item {
+                font-size: 14px;
+            }
+        }
+        .login_username {
+            font-size: 14px;
+        }
+        .login_status {
+            height: 16px;
+            width: 1px;
+            margin: 0px 8px;
+        }
+        .login-btn {
+            padding: 0 5px;
+            min-width: 10px;
+            font-size: 14px;
+        }
+    }
+}
+
 .header-container {
-    padding: 0 50px;
-    height: 55px;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
     .antlers-img {
         width: 40px;
@@ -17,18 +97,16 @@
             border-radius: 5px;
         }
     }
+    .login_username {
+        color: #2e3440;
+    }
     .login_status {
-        height: 20px;
-        width: 2px;
         background: #2e3440;
-        margin: 0px 15px;
     }
     .login-btn {
-        padding: 0 3px;
         background-color: #545f75;
         color: rgba(255, 255, 255, 0.8);
-        min-width: 60px;
-        border-radius: 10px;
+        border-radius: 8px;
         box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
     }
 }

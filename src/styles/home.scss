@@ -1,16 +1,60 @@
-.all-container {
-    padding-top: 100px;
+@media screen and (min-width: 1200px) {
+    .all-container {
+        padding-top: 100px;
+    }
+    .title-container {
+        .top-detail {
+            width: 60%;
+            .title-content {
+                font-size: 68px;
+            }
+            .description-content {
+                font-size: 14px;
+            }
+        }
+    }
 }
+@media screen and (min-width: 768px) and (max-width: 1200px) {
+    .all-container {
+        padding-top: 60px;
+    }
+    .title-container {
+        .top-detail {
+            width: 70%;
+            .title-content {
+                font-size: 52px;
+            }
+            .description-content {
+                font-size: 14px;
+            }
+        }
+    }
+}
+@media screen and (max-width: 768px) {
+    .all-container {
+        padding-top: 50px;
+    }
+    .title-container {
+        .top-detail {
+            width: 90%;
+            .title-content {
+                font-size: 32px;
+            }
+            .description-content {
+                font-size: 12px;
+            }
+        }
+    }
+}
+
 .animate__animated.animate__rotateInDownLeft {
     --animation-duration: 2s;
 }
 .title-container {
     color: #282C34;
     .top-detail {
-        width: 60%;
         position: relative;
         .title-content {
-            font-size: 60px;
             font-weight: bold;
             .reindeer-img {
                 filter: invert(90%);
@@ -28,12 +72,10 @@
             top: 80%;
         }
         .description-content {
-            // border-top: 1px solid black;
-            font-size: 14px;
             color:	#8E8E8E;
         }
     }
 }
 .content-container {
-    background-color: #fafafa;
+    background-color: #EFF2FF;
 }

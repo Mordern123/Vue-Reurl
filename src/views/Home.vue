@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div style="overflow: hidden;">
     <div class="w-100">
       <Header></Header>
     </div>
@@ -8,7 +8,7 @@
         <div class="top-detail">
           <div class="title-content d-flex flex-wrap">
             <div
-              class="col-8 d-flex justify-content-center mr-2"
+              class="col-10 d-flex justify-content-center mr-2"
               style="color: #2e3440"
             >
               <div class="mr-2 animate__animated animate__rotateInDownLeft animate__slower animate__infinite	infinite">
@@ -36,7 +36,7 @@
       </div>
       <div class="reurl-container d-flex flex-col align-items-center py-3">
         <ReurlComponent @emit-title="getEmitTitle"></ReurlComponent>
-        
+
       </div>
       <div class="content-container d-flex justify-content-center py-3">
         <ContentComponent></ContentComponent>
@@ -65,7 +65,7 @@ export default defineComponent({
   },
   data() {
     return {
-      title: "Reurl",
+      title: "Recut",
       slogan: "短網址",
       description: "安全、簡單、快速",
     };

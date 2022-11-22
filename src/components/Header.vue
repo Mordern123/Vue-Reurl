@@ -8,14 +8,14 @@
               class="antlers-img"
               src="../assets/img/antlers.png"
             >
-            <a
+            <!-- <a
               class="d-flex flex-nowrap"
               style="font-size: 12px; color: rgba(0,0,0,0.2);"
               href="https://www.flaticon.com/free-icons/horns"
               title="horns icons"
             >
               Horns icons created by Freepik - Flaticon
-            </a>
+            </a> -->
           </div>
           <ul class="navbar-nav ml-auto d-flex align-items-center">
             <li class="nav-item dropdown">
@@ -48,10 +48,7 @@
                 </li>
               </ul>
             </li>
-            <div
-              class="ml-4"
-              style="color: #2e3440"
-            >
+            <div class="login_username">
               {{ $t("userName") }}
             </div>
             <div class="login_status"></div>
