@@ -85,7 +85,7 @@
   </div>
 </template>
   
-  <script lang="ts">
+<script lang="ts">
 import { defineComponent } from "vue";
 import axios from "axios";
 import qrCode from "qrcode.vue";
@@ -121,9 +121,6 @@ export default defineComponent({
           this.shortUrl = `${this.localHref}${res.data.shortUrl}`;
         });
     },
-    clickShowQRC() {
-      console.log(123);
-    },
     clickCopy() {
       navigator.clipboard.writeText(this.shortUrl);
     },
@@ -137,7 +134,7 @@ export default defineComponent({
 });
 </script>
   
-  <style scoped lang="scss">
+<style scoped lang="scss">
 @import "../../styles/components/urlComponent/urlviewer.scss";
 </style>
   
