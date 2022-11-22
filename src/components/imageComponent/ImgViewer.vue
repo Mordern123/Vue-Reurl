@@ -1,6 +1,6 @@
 <template>
   <div class="d-flex flex-col flex-xl-row justify-content-between">
-    <form class="dropzone imgurl-raw col-xl-4 mb-3">
+    <form class="dropzone imgurl-raw col-xl-4 mb-3" id="imgD">
       <div
         class="dz-message"
         data-dz-message
@@ -174,7 +174,7 @@ export default defineComponent({
     dropImg() {
       /* eslint-disable  @typescript-eslint/no-this-alias */
       const vm = this;
-      this.myDropzone = new Dropzone("form.dropzone", {
+      this.myDropzone = new Dropzone("#imgD", {
         url: "https://privatutle-bcdlmykzda-de.a.run.app/api/media/image",
         autoProcessQueue: false,
         paramName: "image",
