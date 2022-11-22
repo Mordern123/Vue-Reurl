@@ -1,5 +1,35 @@
-.reurl-all-content {
-    width: 60%;
+@media screen and (min-width: 1200px) {
+    .reurl-all-content {
+        width: 60%;
+        .title-content {
+            a {
+                font-size: 18px;
+            }
+        }
+    }
+}
+@media screen and (min-width: 768px) and (max-width: 1200px) {
+    .reurl-all-content {
+        width: 70%;
+        .title-content {
+            a {
+                font-size: 14px;
+            }
+        }
+    }
+}
+@media screen and (max-width: 768px) {
+    .reurl-all-content {
+        width: 90%;
+        .title-content {
+            a {
+                font-size: 12px;
+            }
+        }
+    }
+}
+
+.reurl-all-content { 
     min-height: 500px;
     .title-content {
         li {
@@ -10,7 +40,6 @@
         }
         a {
             color: #D8DEE9;
-            font-size: 18px;
         }
     }
     .nav .nav-item .nav-link.active {
