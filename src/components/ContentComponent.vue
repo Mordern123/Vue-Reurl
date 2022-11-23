@@ -11,10 +11,7 @@
     <div class="d-flex flex-col flex-xl-row justify-content-xl-between">
       <div class="block-content col-12 col-xl-3 d-flex flex-col align-items-center">
         <div class="title-content mb-2">
-          <i
-            class="bi bi-shield-fill-check"
-            style="color: #6C8FFF"
-          ></i>
+          <i class="bi bi-shield-fill-check"></i>
           {{ $t("100Safety") }}
         </div>
         <div class="text-content mb-3">
@@ -23,10 +20,7 @@
       </div>
       <div class="block-content col-12 col-xl-3 d-flex flex-col align-items-center">
         <div class="title-content mb-2">
-          <i
-            class="bi bi-line"
-            style="color: #06C152"
-          ></i>
+          <i class="bi bi-line"></i>
           {{ $t("100Support") }}
         </div>
         <div class="text-content mb-3">
@@ -35,10 +29,7 @@
       </div>
       <div class="block-content col-12 col-xl-3 d-flex flex-col align-items-center">
         <div class="title-content mb-2">
-          <i
-            class="bi bi-patch-check-fill"
-            style="color: #FEBC38"
-          ></i>
+          <i class="bi bi-patch-check-fill"></i>
           {{ $t("100Free") }}
         </div>
         <div class="text-content mb-3">

@@ -1,0 +1,76 @@
+@media screen and (min-width: 1200px) {
+    .userflow-all-container {
+        width: 60%;
+    }
+}
+@media screen and (min-width: 768px) and (max-width: 1200px) {
+    .userflow-all-container {
+        width: 70%;
+    }
+}
+@media screen and (max-width: 768px) {
+    .userflow-all-container {
+        width: 90%;
+    }
+}
+
+.userflow-all-container {
+    padding-top: 10px;
+    .title-top-content {
+        font-size: 26px;
+        font-weight: bolder;
+        color: #436de2;
+        text-align: center;
+    }
+    .title-top-btn {
+        color: #3B4252;
+        border-radius: 5px;
+        padding: 10px 40px;
+        font-weight: bold;
+        transition: all 0.3s ease;
+        position: relative;
+        display: inline-block;
+        box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
+                        7px 7px 20px 0px rgba(0,0,0,.1),
+                        4px 4px 5px 0px rgba(0,0,0,.1);
+        background:transparent;
+        border: none;
+        z-index: 1;
+    }
+    .btn-15:after {
+        position: absolute;
+        content: "";
+        width: 0;
+        height: 100%;
+        top: 0;
+        right: 0;
+        z-index: -1;
+        border-radius: 5px;
+        box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
+                        7px 7px 20px 0px rgba(0,0,0,.1),
+                        4px 4px 5px 0px rgba(0,0,0,.1);
+        transition: all 0.3s ease;
+    }
+    .btn-15:hover {
+        color: #40495e;
+    }
+    .btn-15:hover:after {
+        left: 0;
+        width: 100%;
+    }
+    .btn-15:active {
+        top: 2px;
+    }
+    .block-content {
+        .title-content {
+            font-size: 20px;
+            font-weight: bold;
+            color: rgba($color: #3B4252, $alpha: 0.9);
+        }
+        .text-content {
+            font-size: 16px;
+            color: #52688b;
+            text-align: center;
+        }
+    }
+}

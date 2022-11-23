@@ -56,11 +56,11 @@
         position: relative;
         .title-content {
             font-weight: bold;
-            .reindeer-img {
-                filter: invert(90%);
+            .dog-img {
+                filter: invert(70%);
                 width: 280px;
                 position: absolute;
-                top: 70px;
+                top: -95px;
                 right: -50px;
                 z-index: -1;
             }
@@ -75,6 +75,9 @@
             color:	#8E8E8E;
         }
     }
+}
+.userflow-container {
+    background-color: #EFF2FF;
 }
 .content-container {
     background-color: #EFF2FF;
