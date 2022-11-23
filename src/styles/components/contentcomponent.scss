@@ -1,14 +1,30 @@
+@media screen and (min-width: 1200px) {
+    .content-all-container {
+        width: 60%;
+    }
+}
+@media screen and (min-width: 768px) and (max-width: 1200px) {
+    .content-all-container {
+        width: 70%;
+    }
+}
+@media screen and (max-width: 768px) {
+    .content-all-container {
+        width: 90%;
+    }
+}
 .content-all-container {
-    width: 60%;
     padding-top: 10px;
     .title-top-content {
         font-size: 28px;
         font-weight: bolder;
         color: #436de2;
+        text-align: center;
     }
     .description-top-content {
         font-size: 16px;
         color: #6d83a8;
+        text-align: center;
     }
     .block-content {
         .title-content {

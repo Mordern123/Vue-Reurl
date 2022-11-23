@@ -1,7 +1,7 @@
 <template>
   <div class="d-flex flex-col flex-xl-row justify-content-between">
     <form
-      class="dropzone imgurl-raw col-xl-4 mb-3"
+      class="dropzone videourl-raw col-xl-4 mb-3"
       id="videoD"
     >
       <div
@@ -40,11 +40,11 @@
         </div>
       </div>
       <div class="col-12">
-        <div class="imgtitle-setting w-100">
+        <div class="videotitle-setting w-100">
           {{ $t("deadline") }}
         </div>
         <input
-          class="imgtext-setting col-12"
+          class="videotext-setting col-12"
           type="text"
           placeholder="example: 3000"
           v-model="expTime"
@@ -52,11 +52,11 @@
         />
       </div>
       <div class="col-12">
-        <div class="imgtitle-setting w-100">
+        <div class="videotitle-setting w-100">
           {{ $t("password") }}
         </div>
         <input
-          class="imgtext-setting col-12"
+          class="videotext-setting col-12"
           type="text"
           placeholder="example: 123456"
           v-model="password"
@@ -159,6 +159,6 @@ export default defineComponent({
 </script>
     
 <style scoped lang="scss">
-@import "../../styles/components/imageComponent/imgviewer.scss";
+@import "../../styles/components/videoComponent/videoviewer.scss";
 </style>
     
