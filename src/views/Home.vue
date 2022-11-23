@@ -15,7 +15,7 @@
                 {{ title }}
               </div>
               <div style="color: black">
-                {{ slogan }}
+                {{ $t(slogan) }}
               </div>
             </div>
             <div class="reindeer-img">
@@ -30,7 +30,7 @@
             </div>
           </div>
           <div class="description-content pt-1">
-            {{ description }}
+            {{ $t(description) }}
           </div>
         </div>
       </div>
@@ -65,9 +65,9 @@ export default defineComponent({
   },
   data() {
     return {
-      title: "Recut",
-      slogan: "短網址",
-      description: "安全、簡單、快速",
+      title: "ReCut",
+      slogan: "shortenURL",
+      description: "description",
     };
   },
   methods: {
