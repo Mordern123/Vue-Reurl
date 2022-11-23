@@ -65,7 +65,7 @@ export default defineComponent({
   },
   data() {
     return {
-      title: "Recut",
+      title: "ReCut",
       slogan: "shortenURL",
       description: "description",
     };

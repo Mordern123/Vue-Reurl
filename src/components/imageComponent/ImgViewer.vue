@@ -1,6 +1,9 @@
 <template>
   <div class="d-flex flex-col flex-xl-row justify-content-between">
-    <form class="dropzone imgurl-raw col-xl-4 mb-3" id="imgD">
+    <form
+      class="dropzone imgurl-raw col-xl-4 mb-3"
+      id="imgD"
+    >
       <div
         class="dz-message"
         data-dz-message
@@ -10,7 +13,7 @@
             class="bi bi-image"
             style="font-size: 44px"
           ></i><br />
-          Drag and Drop File<br />
+          Drag and Drop Image<br />
           or<br />
         </span>
         <span style="
@@ -192,7 +195,7 @@ export default defineComponent({
           });
           this.on("sending", (file, xhr, formData) => {
             formData.append("expirationTime", vm.expTime || "3000");
-            if(vm.password.length) {
+            if (vm.password.length) {
               formData.append("password", vm.password);
             }
           });
