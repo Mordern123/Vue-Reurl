@@ -11,7 +11,7 @@
         <span>
           <i
             class="bi bi-image"
-            style="font-size: 44px"
+            style="font-size: 44px;color: rgba(84, 95, 117)"
           ></i><br />
           Drag and Drop Video<br />
           or<br />
