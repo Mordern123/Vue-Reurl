@@ -38,7 +38,7 @@ export default defineComponent({
           .then((res) => {
           this.$router.push({
             name: "Media",
-            state: {img: res.data.mediaUrl}
+            state: {data: res.data.mediaUrl}
           })
             // document.location.href = res.data.mediaUrl;
           })

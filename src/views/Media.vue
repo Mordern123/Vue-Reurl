@@ -28,7 +28,7 @@
         </div>
       </div>
       <div class="userimage-container d-flex justify-content-center align-items-center py-3 mb-3">
-        <img :src="userImage" alt="">
+        <img :src="userData" alt="">
       </div>
       <div class="content-container d-flex justify-content-center py-3">
         <ContentComponent></ContentComponent>
@@ -50,6 +50,7 @@ import ContentComponent from "@/components/ContentComponent.vue";
 import UserFlow from "@/components/UserFlow.vue";
 import Footer from "@/components/Footer.vue";
 import "animate.css";
+import Swal from "sweetalert2";
 
 export default defineComponent({
   components: {
@@ -60,14 +61,16 @@ export default defineComponent({
   },
   data() {
     return {
-      userImage: "",
+      userData: "",
       title: "ReCut",
       slogan: "shortenURL",
       description: "description",
     };
   },
   mounted() {
-    this.userImage = history.state.img;
+    console.log(history.state.data)
+    // Swal.fire("Done", "成功上傳作業!", "success");
+    this.userData = history.state.data;
   }
 });
 </script>
