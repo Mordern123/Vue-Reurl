@@ -151,6 +151,7 @@ export default defineComponent({
     return {
       expTime: "",
       password: "",
+      localHref: "",
       imgUrl: "",
       myDropzone: null as any,
       isImgEdit: true,
@@ -200,7 +201,7 @@ export default defineComponent({
             }
           });
           this.on("success", (file: any, response: any) => {
-            vm.shortImg = response.shortUrl;
+            vm.shortImg = `${vm.localHref}${response.shortUrl}`;
             vm.showImg = true;
             vm.isImgEdit = true;
           });
@@ -210,6 +211,7 @@ export default defineComponent({
   },
   mounted() {
     this.dropImg();
+    this.localHref = document.location.href;
   },
 });
 </script>
