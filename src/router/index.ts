@@ -13,6 +13,11 @@ const routes: Array<RouteRecordRaw> = [
     path: '/:short',
     name: 'Short',
     component: Short
+  },
+  {
+    path: '/media',
+    name: 'Media',
+    component: Media
   }
   // {
   //   path: '/about',
