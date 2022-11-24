@@ -10,6 +10,9 @@ import zh from './assets/language/zh.json';
 import jp from './assets/language/jp.json';
 import en from './assets/language/en.json';
 
+import VueSweetalert2 from 'vue-sweetalert2';
+import 'sweetalert2/dist/sweetalert2.min.css';
+
 const i18n = createI18n({
     legacy: false,
     messages: {
@@ -20,4 +23,4 @@ const i18n = createI18n({
     globalInjection: true
 });
 
-createApp(App).use(router).use(i18n).mount('#app')
+createApp(App).use(router).use(i18n).use(VueSweetalert2).mount('#app')

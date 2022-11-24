@@ -22,7 +22,9 @@
     "vue": "^3.0.0",
     "vue-class-component": "^8.0.0-0",
     "vue-i18n": "^9.3.0-beta.6",
-    "vue-router": "^4.0.0-0"
+    "vue-router": "^4.0.0-0",
+    "vue-simple-alert": "^1.1.1",
+    "vue-sweetalert2": "^5.0.5"
   },
   "devDependencies": {
     "@tailwindcss/postcss7-compat": "^2.2.17",

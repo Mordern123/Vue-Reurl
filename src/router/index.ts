@@ -1,6 +1,8 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
 import Home from '../views/Home.vue'
 import Short from '../views/Short.vue'
+import Media from '../views/Media.vue'
+import Verify from '../views/Verify.vue'
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -12,6 +14,16 @@ const routes: Array<RouteRecordRaw> = [
     path: '/:short',
     name: 'Short',
     component: Short
+  },
+  {
+    path: '/media',
+    name: 'Media',
+    component: Media,
+  },
+  {
+    path: '/verify/:short',
+    name: 'Verify',
+    component: Verify
   }
   // {
   //   path: '/about',
