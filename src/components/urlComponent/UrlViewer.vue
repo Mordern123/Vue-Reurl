@@ -17,7 +17,7 @@
       </button>
     </div>
     <div
-      class="error-url-content"
+      class="error-url-content mb-3"
       v-if="message.substring(0,4)!=='http' && message!==''"
     >
       <i

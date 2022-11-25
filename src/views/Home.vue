@@ -15,31 +15,26 @@
                 {{ title }}
               </div>
               <div style="color: black">
-                {{ slogan }}
+                {{ $t(slogan) }}
               </div>
             </div>
-            <div class="reindeer-img">
-              <img src="../assets/img/reindeer.png">
-              <a
-                class="copyright-reindeer"
-                href="https://www.flaticon.com/free-icons/deer"
-                title="deer icons"
-              >
-                Deer icons created by monkik - Flaticon
-              </a>
+            <div class="dog-img">
+              <img src="../assets/img/dog.png">
             </div>
           </div>
           <div class="description-content pt-1">
-            {{ description }}
+            {{ $t(description) }}
           </div>
         </div>
       </div>
       <div class="reurl-container d-flex flex-col align-items-center py-3">
         <ReurlComponent @emit-title="getEmitTitle"></ReurlComponent>
-
       </div>
       <div class="content-container d-flex justify-content-center py-3">
         <ContentComponent></ContentComponent>
+      </div>
+      <div class="userflow-container d-flex justify-content-center pb-3">
+        <UserFlow></UserFlow>
       </div>
     </div>
     <div class="w-100">
@@ -53,6 +48,7 @@ import { defineComponent } from "vue";
 import Header from "@/components/Header.vue";
 import ReurlComponent from "@/components/ReurlComponent.vue";
 import ContentComponent from "@/components/ContentComponent.vue";
+import UserFlow from "@/components/UserFlow.vue";
 import Footer from "@/components/Footer.vue";
 import "animate.css";
 
@@ -61,13 +57,14 @@ export default defineComponent({
     Header,
     ReurlComponent,
     ContentComponent,
+    UserFlow,
     Footer,
   },
   data() {
     return {
-      title: "Recut",
-      slogan: "短網址",
-      description: "安全、簡單、快速",
+      title: "ReCut",
+      slogan: "shortenURL",
+      description: "description",
     };
   },
   methods: {

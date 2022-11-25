@@ -37,7 +37,7 @@
         class="tab-pane fade"
         id="videourl"
       >
-        <p class="videourl-raw">Messages tab content ...</p>
+        <VideoViewer></VideoViewer>
       </div>
       <div
         class="tab-pane fade"
@@ -53,6 +53,7 @@
 import { defineComponent } from "vue";
 import UrlViewer from "@/components/urlComponent/UrlViewer.vue";
 import ImgViewer from "@/components/imageComponent/ImgViewer.vue";
+import VideoViewer from "@/components/videoComponent/VideoViewer.vue";
 
 interface categoryMapItem {
   name: string;
@@ -65,6 +66,7 @@ export default defineComponent({
   components: {
     UrlViewer,
     ImgViewer,
+    VideoViewer
   },
   data() {
     return {
@@ -75,25 +77,25 @@ export default defineComponent({
           name: "url",
           img: "link.svg",
           id: "#reurl",
-          title: "短網址",
+          title: "shortenURL",
         },
         {
           name: "image",
           img: "image.svg",
           id: "#imgurl",
-          title: "圖片轉網址",
+          title: "ImageToURL",
         },
         {
           name: "video",
           img: "video.svg",
           id: "#videourl",
-          title: "影片轉網址",
+          title: "VideoToURL",
         },
         {
           name: "audio",
           img: "mic.svg",
           id: "#audiourl",
-          title: "語音轉網址",
+          title: "AudioToURL",
         },
       ] as Array<categoryMapItem>,
     };
