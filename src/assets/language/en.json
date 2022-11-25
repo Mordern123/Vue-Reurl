@@ -40,5 +40,6 @@
   "qrc-eduText": "Scan the QR Code on the website to make it easier for you to use ReCut on Line",
   "imgType": "Image Type",
   "uploadTime": "Upload Time",
-  "expTime": "Expiration Time"
+  "expTime": "Expiration Time",
+  "goToTop": "Start"
 }

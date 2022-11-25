@@ -7,7 +7,7 @@
       <a
         href="#"
         class="title-top-btn btn-15 mb-4"
-      >開始使用</a>
+      >{{ $t("goToTop") }}</a>
     </div>
     <div class="d-flex flex-col flex-xl-row justify-content-xl-between">
       <div class="block-content col-12 col-xl-3 d-flex flex-col align-items-center">

@@ -40,5 +40,6 @@
   "qrc-eduText": "掃描網站上的QR Code，讓您在Line上更方便的使用ReCut",
   "imgType": "影像類型",
   "uploadTime": "上傳時間",
-  "expTime": "到期時間"
+  "expTime": "到期時間",
+  "goToTop": "開始使用"
 }
