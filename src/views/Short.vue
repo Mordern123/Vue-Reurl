@@ -49,7 +49,7 @@ export default defineComponent({
         })
         .catch((error) => {
           // TODO: error page & "not found" page
-          if (error.response.data.message == "ErrMediaPassword") {
+          if (error.response.data.message === "ErrMediaPassword") {
             this.$router.push({
               name: "Media",
               state: {
@@ -58,7 +58,7 @@ export default defineComponent({
               },
             });
           }
-          if (error.response.data.message == "ErrOutOfExpirationTime") {
+          if (error.response.data.message === "ErrOutOfExpirationTime") {
             Swal.fire("請重新上傳圖片", "已達限制時間", "error");
             this.$router.push({
               name: "Home",

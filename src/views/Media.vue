@@ -49,15 +49,22 @@
           v-else
           class="d-flex flex-col"
         >
-          <div>
+          <div style="background-color: rgba(59, 66, 82, 0.5); border-radius: 5px">
             輸入密碼：
           </div>
           <input
             type="text"
-            class="form-control w-100"
+            class="form-control w-100 mb-2"
             v-model="userPwd"
           >
-          <button @click="sendPwd()">
+          <button
+            class="p-1"
+            @click="sendPwd()"
+            style="background-color: #3B4252;
+            color: white;
+            border-radius: 10px;
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;"
+          >
             送出
           </button>
         </div>
