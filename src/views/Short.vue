@@ -36,11 +36,16 @@ export default defineComponent({
             `https://privatutle-bcdlmykzda-de.a.run.app/api/media/${this.short}`
           )
           .then((res) => {
-          this.$router.push({
-            name: "Media",
-            state: {data: res.data.mediaUrl}
-          })
-            // document.location.href = res.data.mediaUrl;
+            console.log(res)
+            this.$router.push({
+              name: "Media",
+              state: {
+                media: res.data.mediaUrl,
+                mediaType: res.data.mediaType,
+                addTime: res.data.createTime,
+                expTime: res.data.expirationTime
+              }
+            })
           })
           .catch((error) => {
             // console.log(error.response.data.message);

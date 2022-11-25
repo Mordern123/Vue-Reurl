@@ -237,7 +237,7 @@ export default defineComponent({
             vm.isImgEdit = false;
           });
           this.on("sending", (file, xhr, formData) => {
-            formData.append("expirationTime", vm.expTime || "3000");
+            formData.append("expirationTime", vm.expTime || "3600");
             if (vm.password.length) {
               formData.append("password", vm.password);
             }
