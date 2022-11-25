@@ -82,31 +82,76 @@
     <button
       class="reurl-btn btn btn-outline-secondary"
       type="button"
+      data-bs-toggle="modal"
+      data-bs-target="#QRCodeModal"
+      title="QRCode"
     >
       <i class="bi bi-qr-code-scan"></i>
     </button>
     <button
       class="reurl-btn btn btn-outline-secondary"
       type="button"
+      data-bs-toggle="tooltip"
+      title="Copy"
+      @click="clickCopy()"
     >
       <i class="bi bi-clipboard-check"></i>
-      <button
-        class="reurl-btn btn btn-outline-secondary"
-        type="button"
-      >
-        <i class="bi bi-send-check"></i>
-      </button>
     </button>
+    <button
+      class="reurl-btn btn btn-outline-secondary"
+      type="button"
+      data-bs-toggle="tooltip"
+      title="Go"
+      @click="clickGoUrl()"
+    >
+      <i class="bi bi-send-check"></i>
+    </button>
+  </div>
+    <div
+    class="modal fade"
+    id="QRCodeModal_video"
+    data-bs-keyboard="false"
+    tabindex="-1"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <p style="font-weight: bolder">
+            {{ `QR Code： ${shortVideo}` }}
+          </p>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="modal-body d-flex justify-content-center">
+          <qrCode
+            :value="shortVideo"
+            :size="100"
+            level="H"
+            background="#8895af"
+          />
+        </div>
+      </div>
+    </div>
   </div>
 </template>
     
 <script lang="ts">
 import { defineComponent } from "vue";
 import Dropzone from "dropzone";
+import qrCode from "qrcode.vue";
 
 export default defineComponent({
+  components: {
+    qrCode,
+  },
   data() {
     return {
+      localHref: "",
       expTime: "",
       password: "",
       myDropzone: null as any,
@@ -135,25 +180,32 @@ export default defineComponent({
             this.removeAllFiles(true);
             this.addFile(file);
           });
-          this.on("thumbnail", (file) => {
+          this.on("thumbnail", () => {
             vm.showVideo = false;
           });
           this.on("sending", (file, xhr, formData) => {
-            formData.append("expirationTime", vm.expTime || "3000");
+            formData.append("expirationTime", vm.expTime || "3600");
             if (vm.password.length) {
               formData.append("password", vm.password);
             }
           });
           this.on("success", (file: any, response: any) => {
-            vm.shortVideo = response.shortUrl;
+            vm.shortVideo = `${vm.localHref}${response.shortUrl}`;
             vm.showVideo = true;
           });
         },
       });
     },
+    clickCopy() {
+      navigator.clipboard.writeText(this.shortVideo);
+    },
+    clickGoUrl() {
+      window.open(this.shortVideo);
+    },
   },
   mounted() {
     this.dropVideo();
+    this.localHref = document.location.href;
   },
 });
 </script>

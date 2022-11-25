@@ -37,5 +37,9 @@
   "pwd-edu": "設定密碼、有效時間",
   "pwd-eduText": "將短網址設定密碼以及有效時間，來有效保護圖片和影片",
   "qrc-edu": "Line Bot好友",
-  "qrc-eduText": "掃描網站上的QR Code，讓您在Line上更方便的使用ReCut"
+  "qrc-eduText": "掃描網站上的QR Code，讓您在Line上更方便的使用ReCut",
+  "imgType": "影像類型",
+  "uploadTime": "上傳時間",
+  "expTime": "到期時間",
+  "goToTop": "開始使用"
 }

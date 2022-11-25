@@ -15,7 +15,7 @@
                 {{ title }}
               </div>
               <div style="color: black">
-                {{ $t(slogan) }}
+                {{ $t('shortenURL') }}
               </div>
             </div>
             <div class="dog-img">
@@ -23,12 +23,51 @@
             </div>
           </div>
           <div class="description-content pt-1">
-            {{ $t(description) }}
+            {{ $t('description') }}
           </div>
         </div>
       </div>
-      <div class="userimage-container d-flex justify-content-center align-items-center py-3 mb-3">
-        <img :src="userImage" alt="">
+      <div
+        class="userimage-container d-flex justify-content-center align-items-center p-3 mb-4"
+        @contextmenu.prevent
+      >
+        <div
+          v-if="!isPwd"
+          class=" d-flex flex-col justify-content-center align-items-center w-100 p-3"
+          style="background-color: #3B4252; color: white; border-radius: 10px; height: 100%"
+        >
+          <img
+            :src="userData"
+            alt="資料無法顯示"
+            class="mb-4"
+          >
+          <p>{{ $t('imgType') }}：{{ mediaType }}</p>
+          <p>{{ $t('uploadTime') }}：{{ addMediaTime }}</p>
+          <p>{{ $t('expTime') }}：{{ expMediaTime }}</p>
+        </div>
+        <div
+          v-else
+          class="d-flex flex-col"
+        >
+          <div style="background-color: rgba(59, 66, 82, 0.5); border-radius: 5px">
+            輸入密碼：
+          </div>
+          <input
+            type="text"
+            class="form-control w-100 mb-2"
+            v-model="userPwd"
+          >
+          <button
+            class="p-1"
+            @click="sendPwd()"
+            style="background-color: #3B4252;
+            color: white;
+            border-radius: 10px;
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;"
+          >
+            送出
+          </button>
+        </div>
       </div>
       <div class="content-container d-flex justify-content-center py-3">
         <ContentComponent></ContentComponent>
@@ -50,6 +89,8 @@ import ContentComponent from "@/components/ContentComponent.vue";
 import UserFlow from "@/components/UserFlow.vue";
 import Footer from "@/components/Footer.vue";
 import "animate.css";
+import axios from "axios";
+import Swal from "sweetalert2";
 
 export default defineComponent({
   components: {
@@ -60,15 +101,54 @@ export default defineComponent({
   },
   data() {
     return {
-      userImage: "",
+      isPwd: false,
+      userPwd: "",
+      short: "",
+      userData: "",
+      mediaType: "",
+      addMediaTime: "",
+      expMediaTime: "",
       title: "ReCut",
-      slogan: "shortenURL",
-      description: "description",
     };
   },
+  methods: {
+    sendPwd() {
+      axios
+        .get(
+          `https://privatutle-bcdlmykzda-de.a.run.app/api/media/${this.short}?password=${this.userPwd}`
+        )
+        .then((res) => {
+          this.userData = res.data.mediaUrl;
+          this.mediaType = res.data.mediaType;
+          this.addMediaTime = this.timestampToHM(res.data.createTime);
+          this.expMediaTime = this.timestampToHM(res.data.expirationTime);
+          this.isPwd = false;
+        })
+        .catch((error) => {
+          // TODO: error page & "not found" page
+          Swal.fire("請再試一次", "密碼錯誤!", "error");
+        });
+    },
+    timestampToHM(timestamp: number) {
+      const date = new Date(timestamp * 1000);
+      return `${date.getFullYear()} / ${
+        date.getMonth() + 1 < 10
+          ? `0${date.getMonth() + 1}`
+          : `${date.getMonth() + 1}`
+      } / ${date.getDate() < 10 ? "0" + date.getDate() : date.getDate()} / 
+          ${date.getHours() < 10 ? "0" + date.getHours() : date.getHours()}:${
+        date.getMinutes() < 10 ? "0" + date.getMinutes() : date.getMinutes()
+      }`;
+    },
+  },
   mounted() {
-    this.userImage = history.state.img;
-  }
+    this.isPwd = history.state?.isPwd;
+    this.short = history.state?.short;
+    this.userData = history.state?.media;
+    this.mediaType = history.state?.mediaType;
+    this.addMediaTime = this.timestampToHM(history.state?.addTime);
+    this.expMediaTime = this.timestampToHM(history.state?.expTime);
+  },
 });
 </script>
 <style scoped lang="scss">
