@@ -37,5 +37,8 @@
   "pwd-edu": "Set Password, Valid Time",
   "pwd-eduText": "Set a password and valid time for the short URL to effectively protect pictures and videos",
   "qrc-edu": "LineBot Friend",
-  "qrc-eduText": "Scan the QR Code on the website to make it easier for you to use ReCut on Line"
+  "qrc-eduText": "Scan the QR Code on the website to make it easier for you to use ReCut on Line",
+  "imgType": "Image Type",
+  "uploadTime": "Upload Time",
+  "expTime": "Expiration Time"
 }

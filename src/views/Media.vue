@@ -36,9 +36,9 @@
           style="background-color: #3B4252; color: white; border-radius: 10px"
         >
           <img :src="userData" alt="資料無法顯示" class="mb-4">
-          <p>影像類型：{{ mediaType }}</p>
-          <p>上傳時間：{{ addMediaTime }}</p>
-          <p>到期時間：{{ expMediaTime }}</p>
+          <p>{{ $t('imgType') }}：{{ mediaType }}</p>
+          <p>{{ $t('uploadTime') }}：{{ addMediaTime }}</p>
+          <p>{{ $t('expTime') }}：{{ expMediaTime }}</p>
         </div>
       </div>
       <div class="content-container d-flex justify-content-center py-3">

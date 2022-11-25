@@ -118,7 +118,7 @@
       <div class="modal-content">
         <div class="modal-header">
           <p style="font-weight: bolder">
-            {{ `QR Code： ${shortImg}` }}
+            {{ `QR Code： ${shortVideo}` }}
           </p>
           <button
             type="button"
@@ -129,7 +129,7 @@
         </div>
         <div class="modal-body d-flex justify-content-center">
           <qrCode
-            :value="shortImg"
+            :value="shortVideo"
             :size="100"
             level="H"
             background="#8895af"

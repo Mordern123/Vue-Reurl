@@ -37,5 +37,8 @@
   "pwd-edu": "パスワード、有効時間の設定",
   "pwd-eduText": "短縮 URL のパスワードと有効時間を設定して、画像や動画を効果的に保護します",
   "qrc-edu": "LineBot 友達",
-  "qrc-eduText": "ウェブサイトの QR コードをスキャンすると、ReCut on Line を簡単に使用できます"
+  "qrc-eduText": "ウェブサイトの QR コードをスキャンすると、ReCut on Line を簡単に使用できます",
+  "imgType": "Image Type",
+  "uploadTime": "Upload Time",
+  "expTime": "Expiration Time"
   }
