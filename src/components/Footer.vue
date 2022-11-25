@@ -16,11 +16,16 @@
         >使用者條款</router-link>
       </div>
     </div>
-    <div class="d-flex flex-col align-items-center">
-      <span class="text-start mt-2">
-        Copyright © 2022-2023 Created by Eric, Marc, Adam. LIMITED. 保留一切權利 |
-        <span style="color: rgba(255, 255, 255, 0.5)">Version 2.1.0</span>
-      </span>
+    <div
+      class="d-flex flex-col align-items-center"
+      style="text-align: center"
+    >
+      <p>
+        <span class="text-start mt-2">
+          Copyright © 2022-2023 Created by Eric, Marc, Adam. LIMITED. 保留一切權利 |
+          <span style="color: rgba(255, 255, 255, 0.5)">Version 2.1.0</span>
+        </span>
+      </p>
       <div class="row">
         <p class="mb-0">
           <span
@@ -29,12 +34,12 @@
           >
             ReCut Coding團隊
           </span>
-          <span class="text-white"> 台中市北屯區 <i class="bi bi-github mr-1"></i>
+          <span class="text-white"> 台中市北屯區
             <a
               href="https://github.com/Mordern123"
               style="color: rgba(255, 255, 255, 0.5)"
             >
-              https://github.com/Mordern123
+              <i class="bi bi-github mr-1"></i>https://github.com/Mordern123
             </a>
           </span>
         </p>
