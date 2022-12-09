@@ -66,7 +66,7 @@ export default defineComponent({
   components: {
     UrlViewer,
     ImgViewer,
-    VideoViewer
+    VideoViewer,
   },
   data() {
     return {
@@ -92,8 +92,8 @@ export default defineComponent({
           title: "VideoToURL",
         },
         {
-          name: "audio",
-          img: "mic.svg",
+          name: "LINE",
+          img: "line.svg",
           id: "#audiourl",
           title: "AudioToURL",
         },
