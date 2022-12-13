@@ -43,7 +43,7 @@
         class="tab-pane fade"
         id="audiourl"
       >
-        <p class="testourl-raw">Messages tab content ...</p>
+        <LineViewer></LineViewer>
       </div>
     </div>
   </div>
@@ -54,6 +54,7 @@ import { defineComponent } from "vue";
 import UrlViewer from "@/components/urlComponent/UrlViewer.vue";
 import ImgViewer from "@/components/imageComponent/ImgViewer.vue";
 import VideoViewer from "@/components/videoComponent/VideoViewer.vue";
+import LineViewer from "@/components/lineComponent/LineViewer.vue";
 
 interface categoryMapItem {
   name: string;
@@ -66,7 +67,8 @@ export default defineComponent({
   components: {
     UrlViewer,
     ImgViewer,
-    VideoViewer
+    VideoViewer,
+    LineViewer,
   },
   data() {
     return {
@@ -92,8 +94,8 @@ export default defineComponent({
           title: "VideoToURL",
         },
         {
-          name: "audio",
-          img: "mic.svg",
+          name: "LINE",
+          img: "line.svg",
           id: "#audiourl",
           title: "AudioToURL",
         },
