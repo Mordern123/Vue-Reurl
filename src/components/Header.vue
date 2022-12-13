@@ -44,8 +44,6 @@
             <div class="login_username">
               {{ $t("userName") }}
             </div>
-            <div class="login_status"></div>
-            <button class="login-btn">{{ $t('login') }}</button>
           </ul>
         </div>
       </div>
