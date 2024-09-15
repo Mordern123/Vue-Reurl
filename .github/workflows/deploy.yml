@@ -33,9 +33,10 @@ jobs:
     - name: Build and push image to Amazon ECR
       env:
         ECR_REGISTRY: ${{ secrets.ECR }}
+        IMAGE_TAG: ${{ github.sha }}
       run: |
-        docker build -t reurl .
-        docker push ${{ secrets.ECR }}:latest
+        docker build -t reurl .:$IMAGE_TAG .
+        docker push ${{ secrets.ECR }}:$IMAGE_TAG
 
     - name: Run tests
       run: |
@@ -47,21 +48,17 @@ jobs:
 
     - name: Deploy to App Runner
       run: |
-        aws apprunner create-service \
-          --service-name reurl \
+        aws apprunner update-service \
+          --service-arn ${{ secrets.ARN }} \
           --source-configuration '{
             "AuthenticationConfiguration": {
               "AccessRoleArn": ${{ secrets.ARN }}
             },
             "ImageRepository": {
-              "ImageIdentifier": ${{ secrets.ECR }},
+              "ImageIdentifier": "${{ secrets.ECR }}:${{ github.sha }}",
               "ImageRepositoryType": "ECR",
               "ImageConfiguration": {
                 "Port": "80"
               }
             }
-          }' \
-          --instance-configuration '{
-            "Cpu": "1 vCPU",
-            "Memory": "2 GB"
           }'
