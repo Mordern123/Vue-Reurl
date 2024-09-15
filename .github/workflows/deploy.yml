@@ -51,9 +51,6 @@ jobs:
         aws apprunner update-service \
           --service-arn ${{ secrets.ARN }} \
           --source-configuration '{
-            "AuthenticationConfiguration": {
-              "AccessRoleArn": ${{ secrets.ARN }}
-            },
             "ImageRepository": {
               "ImageIdentifier": "${{ secrets.ECR }}:${{ github.sha }}",
               "ImageRepositoryType": "ECR",
