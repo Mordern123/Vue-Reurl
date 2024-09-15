@@ -1,46 +1,67 @@
-name: Build and Deploy to Cloud Run
+name: Build, Test, and Deploy to AWS App Runner
 
 on:
   push:
     branches:
-    - develop
+    - master
 
 env:
-  PROJECT_ID: ${{ secrets.GCP_PROJECT_ID }}
-  SERVICE_NAME: vreurlvdevelop
-  RUN_REGION: asia-east1
+  AWS_REGION: ap-northeast-1  # 請根據您的需求更改區域
+  ECR_REPOSITORY: daddy  # 請替換為您的 ECR 倉庫名稱
+  APP_RUNNER_SERVICE: reurl  # 請替換為您的 App Runner 服務名稱
 
 jobs:
-  setup-build-deploy:
-    name: Setup, Build, and Deploy
-    runs-on: ubuntu-latest
+  build-test-deploy: 
+    name: Build, Test, and Deploy
+    runs-on: nginx:1.26.2-alpine
 
     steps:
     - name: Checkout
       uses: actions/checkout@v2
 
-    - uses: google-github-actions/setup-gcloud@v0
+    - name: Configure AWS credentials
+      uses: aws-actions/configure-aws-credentials@v1
       with:
-        service_account_email: ${{ secrets.GCP_SA_EMAIL }}
-        service_account_key: ${{ secrets.GCP_SA_KEY }}
-        project_id: ${{ secrets.GCP_PROJECT_ID }}
-        export_default_credentials: true
-        
-    - name: Info
-      run: gcloud info
+        aws-access-key-id: ${{ secrets.AWS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ID }}
+        aws-region: us-east-1
 
-    - name: Build
-      run: |-
-        gcloud builds submit \
-          --quiet \
-          --tag "gcr.io/$PROJECT_ID/$SERVICE_NAME:$GITHUB_SHA"
+    - name: Login to Amazon ECR
+      id: login-ecr
+      uses: aws-actions/amazon-ecr-login@v1
 
-    - name: Deploy
-      run: |-
-        gcloud run deploy "$SERVICE_NAME" \
-          --quiet \
-          --region "$RUN_REGION" \
-          --image "gcr.io/$PROJECT_ID/$SERVICE_NAME:$GITHUB_SHA" \
-          --platform "managed" \
-          --port 80 \
-          --allow-unauthenticated
+    - name: Build and push image to Amazon ECR
+      env:
+        ECR_REGISTRY: ${{ secrets.ECR }}
+      run: |
+        docker build -t reurl .
+        docker push ${{ secrets.ECR }}:latest
+
+    - name: Run tests
+      run: |
+        # 在這裡添加您的測試命令
+        # 例如：npm test 或 python -m pytest
+        echo "Running tests..."
+        # 添加輸入測試的命令，例如：
+        # python test_input.py
+
+    - name: Deploy to App Runner
+      run: |
+        aws apprunner create-service \
+          --service-name reurl \
+          --source-configuration '{
+            "AuthenticationConfiguration": {
+              "AccessRoleArn": ${{ secrets.ARN }}
+            },
+            "ImageRepository": {
+              "ImageIdentifier": ${{ secrets.ECR }},
+              "ImageRepositoryType": "ECR",
+              "ImageConfiguration": {
+                "Port": "80"
+              }
+            }
+          }' \
+          --instance-configuration '{
+            "Cpu": "1 vCPU",
+            "Memory": "2 GB"
+          }'
