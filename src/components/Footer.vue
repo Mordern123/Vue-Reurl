@@ -9,11 +9,11 @@
         <router-link
           to="/privacy-policy"
           class="nav-link"
-        >隱私權政策</router-link>
+        >隱私權政策11</router-link>
         <router-link
           to="/user-terms"
           class="nav-link"
-        >使用者條款</router-link>
+        >使用者條款111</router-link>
       </div>
     </div>
     <div
