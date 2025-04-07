@@ -22,7 +22,7 @@
     >
       <p>
         <span class="text-start mt-2">
-          Copyright © 2022-2023 Created by Eric, Marc, Adam. LIMITED. 保留一切權利 |
+          Copyright © 2022-2023 Created by Eric, Marc, Adam. LIMITED. 保留一切權利11 |
           <span style="color: rgba(255, 255, 255, 0.5)">Version 2.1.0</span>
         </span>
       </p>
